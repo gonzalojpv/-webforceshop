@@ -11134,17 +11134,18 @@ h6 {
   border: 1px solid #a98307;
   color: #020409;
   font-size: 0.8rem;
+  border-radius: 0;
 }
 
 .btn-group .btn.btn-link.delete:hover {
   background-color: rgba(43, 45, 50, 0.5);
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   text-decoration: none;
 }
 
 .btn-group .btn.btn-link.edit:hover {
   background-color: rgba(169, 131, 7, 0.5);
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   text-decoration: none;
 }
 
@@ -11167,6 +11168,10 @@ header nav.navbar a.navbar-brand {
   color: #a98307;
   font-weight: bold;
   font-size: 1.6rem;
+}
+
+header nav.navbar a.navbar-brand:hover {
+  color: rgba(169, 131, 7, 0.5);
 }
 
 header nav.navbar ul.navbar-nav {

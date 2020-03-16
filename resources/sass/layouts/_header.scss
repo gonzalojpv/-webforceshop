@@ -13,6 +13,10 @@ header {
             color: map-get($theme-colors, primary);
             font-weight: bold;
             font-size: 1.6rem;
+
+            &:hover {
+                color: map-get($theme-colors, primary-light);
+            }
         }
 
         ul.navbar-nav {

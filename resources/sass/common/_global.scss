@@ -8,6 +8,11 @@ html {
 body {
     margin-bottom: 3rem;
     /* Margin bottom by footer height */
+    background-color: map-get($theme-colors, white-light);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 300;
+    font-family: $font-family-base;
 }
 
 footer {
@@ -17,4 +22,101 @@ footer {
     height: 3rem;
     /* Set the fixed height of the footer here */
     line-height: 60px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-header;
+    font-weight: 400;
+
+    @include media-breakpoint-up(xl) {
+        font-weight: 500;
+    }
+}
+
+h1 {
+    font-size: 3.375rem;
+    line-height: 1.1;
+
+    @include media-breakpoint-up(md) {
+        font-size: 3.5rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 4rem;
+    }
+
+    @include media-breakpoint-up(xl) {
+        font-size: 4.5rem;
+    }
+}
+
+h2 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+
+    @include media-breakpoint-up(md) {
+        font-size: 2.5rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 2.75rem;
+    }
+
+    @include media-breakpoint-up(xl) {
+        font-size: 3rem;
+    }
+}
+
+h3 {
+    font-size: 1.875rem;
+    line-height: 1.25;
+
+    @include media-breakpoint-up(md) {
+        font-size: 2rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 2.125rem;
+    }
+
+    @include media-breakpoint-up(xl) {
+        font-size: 2.25rem;
+    }
+}
+
+h4 {
+    font-size: 1.1rem;
+    line-height: 1.33;
+
+    @include media-breakpoint-up(md) {
+        font-size: 1.2rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 1.3rem;
+    }
+
+    @include media-breakpoint-up(xl) {
+        font-size: 1.4rem;
+    }
+
+    @include media-breakpoint-up(xxl) {
+        font-size: 1.5rem;
+    }
+}
+
+h5 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+h6 {
+    font-size: 1rem;
+    line-height: 1.5rem;
 }

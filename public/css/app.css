@@ -11058,6 +11058,96 @@ h6 {
   font-family: "Oswald", sans-serif;
 }
 
+.header-content {
+  position: relative;
+  padding: 0 20px;
+  margin-bottom: 2rem;
+}
+
+.header-content .page-title {
+  color: #a98307;
+}
+
+.header-content .page-title .font-weight-bold {
+  color: #020409;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: rgba(126, 128, 131, 0.1);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel .panel-body {
+  padding: 3rem;
+}
+
+.panel .panel-header {
+  padding: 2rem 3rem;
+  border-bottom: 1px solid #a98307;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.panel .panel-header .panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.panel .panel-header p {
+  margin-bottom: 0;
+}
+
+.panel .panel-footer {
+  padding: 0 20px;
+  background-color: #fcfcfc;
+  border-top: 1px solid #dddddd;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.btn.btn-primary {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 5px 24px 7px;
+  border: 2px solid #a98307;
+  color: #fff;
+  background-color: #a98307;
+  transition: all 0.25s ease-out;
+  position: relative;
+  border-radius: 0;
+}
+
+.btn.btn-primary:hover {
+  opacity: 0.9;
+  bottom: -2px;
+}
+
+.btn-group .btn.btn-link {
+  border: 1px solid #a98307;
+  color: #020409;
+  font-size: 0.8rem;
+}
+
+.btn-group .btn.btn-link.delete:hover {
+  background-color: rgba(43, 45, 50, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
+.btn-group .btn.btn-link.edit:hover {
+  background-color: rgba(169, 131, 7, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
 /** Import theme styles */
 
 header {

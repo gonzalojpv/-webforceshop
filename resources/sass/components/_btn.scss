@@ -1,0 +1,24 @@
+.btn {
+    &.btn-primary {
+        font-family: $font-header;
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 5px 24px 7px;
+        border: 2px solid #a98307;
+        color: map-get($theme-colors, white);
+        background-color: map-get($theme-colors, primary);
+        -webkit-transition: all 0.25s ease-out;
+        -moz-transition: all 0.25s ease-out;
+        -o-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out;
+        position: relative;
+        border-radius: 0;
+
+        &:hover {
+            opacity: 0.9;
+            bottom: -2px;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.btn-group {
+    .btn {
+        &.btn-link {
+            border: 1px solid map-get($theme-colors, primary);
+            color: map-get($theme-colors, dark);
+            font-size: 0.8rem;
+
+            &.delete {
+                &:hover {
+                    background-color: map-get($theme-colors, gray-1-light);
+                    color: map-get($theme-colors, white-light);
+                    text-decoration: none;
+                }
+            }
+
+            &.edit {
+                &:hover {
+                    background-color: map-get($theme-colors, primary-light);
+                    color: map-get($theme-colors, white-light);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

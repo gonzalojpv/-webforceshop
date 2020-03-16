@@ -5,10 +5,11 @@
 $body-bg:rgba(255, 255, 255, 0.05);
 
 // Typography
-$font-family-sans-serif: 'Nunito',
-sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+/** Fonts **/
+$font-header: "Oswald", sans-serif;
+$font-family-base: "Montserrat", sans-serif;
 
 $theme-colors: (primary: #a98307,
     primary-light: rgba(169, 131, 7, 0.5),
@@ -21,10 +22,6 @@ $theme-colors: (primary: #a98307,
     gray-1-light: rgba(43, 45, 50, 0.5),
     gray-2: #7e8083,
     gray-2-lightest:rgba(126, 128, 131, 0.1));
-
-/** Fonts **/
-$font-header: "Oswald", sans-serif;
-$font-family-base: "Montserrat", sans-serif;
 
 /* new breackpoint*/
 $grid-columns: 12;

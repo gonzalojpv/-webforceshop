@@ -1,0 +1,107 @@
+header {
+    background-color: map-get($theme-colors, dark);
+    padding: 0;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+
+    nav.navbar {
+        background: transparent !important;
+        padding: 0;
+
+        a.navbar-brand {
+            margin-right: 3rem;
+            padding: 1rem 0;
+            color: map-get($theme-colors, primary);
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+
+        ul.navbar-nav {
+            position: relative;
+            margin-top: 1rem !important;
+
+            @include media-breakpoint-up(lg) {
+                margin-top: 0 !important;
+            }
+
+            li.nav-item {
+                a.nav-link {
+                    text-transform: uppercase;
+                    color: map-get($theme-colors, $key: white);
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                    font-weight: 500;
+                    padding: 14px 8px 12px;
+                    border-bottom: 6px solid transparent;
+                    -webkit-transition: all 0.5s ease-out;
+                    -moz-transition: all 0.5s ease-out;
+                    -o-transition: all 0.5s ease-out;
+                    transition: all 0.5s ease-out;
+
+                    @include media-breakpoint-up(lg) {
+                        padding: 1.5rem;
+                        font-size: 0.875rem;
+                        line-height: 1.25rem;
+                    }
+
+                    @include media-breakpoint-up(xl) {
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                    }
+
+                    &:hover,
+                    &.active {
+                        border-bottom: 2px solid map-get($theme-colors, $key: primary);
+                        color: map-get($theme-colors, $key: primary);
+
+                        @include media-breakpoint-up(lg) {
+                            border-bottom-width: 6px;
+                        }
+                    }
+
+                    @include media-breakpoint-up(xl) {
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                    }
+                }
+
+                &.dropdown {
+                    div.dropdown-menu.show {
+                        border: none;
+                        padding: 0;
+                        border-radius: 0;
+                        margin-top: 0;
+                        background-color: map-get($theme-colors, $key: white);
+                        box-shadow: 0 0 2px 1px rgba(2, 4, 9, 0.05), 0 18px 12px -6px rgba(2, 4, 9, 0.15);
+
+                        a.dropdown-item {
+                            text-transform: capitalize;
+                            font-size: 1rem;
+                            color: map-get($theme-colors, $key: dark);
+                            padding: 0.5rem 1rem;
+                            font-family: "Oswald", sans-serif;
+                            font-weight: 500;
+                            padding: 0.5rem 2rem 0.5rem 1rem;
+
+                            &.anchor.active {
+                                background-color: map-get($theme-colors, $key: white);
+
+                                &:hover {
+                                    background-color: map-get($theme-colors, $key: primary);
+                                    color: white;
+                                }
+                            }
+
+                            &:hover {
+                                background-color: map-get($theme-colors, $key: primary);
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

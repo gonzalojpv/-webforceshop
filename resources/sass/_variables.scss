@@ -2,18 +2,41 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Nunito',
+sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$theme-colors: (
+    primary: #a98307,
+    primary-light: rgba(169, 131, 7, 0.5),
+    white: #fff,
+    white-light: rgba(255, 255, 255, 0.5),
+    dark-light:rgba(2, 4, 9, 0.9),
+    gray-1: #2b2d32,
+    dark: #020409,
+    gray-1-light: rgba(43, 45, 50, 0.5),
+);
+
+
+/* new breackpoint*/
+$grid-columns: 12;
+$grid-gutter-width: 32px;
+/** Bootstrap navbar fix (https://git.io/fADqW) */
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+
+$grid-breakpoints: (xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1500px,
+) !default;
+
+$container-max-widths: (sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1440px,
+) !default;

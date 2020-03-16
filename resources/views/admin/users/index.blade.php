@@ -31,7 +31,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td width="20%" class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-link edit">Edit</button>
+                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-link edit">Edit</a>
                                             <a
                                                 href="javascript:void(0)"
                                                 onclick="event.preventDefault();

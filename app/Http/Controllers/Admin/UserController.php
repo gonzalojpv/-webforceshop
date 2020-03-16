@@ -72,7 +72,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['user'] = User::find($id);
+        return view('admin.users.edit', $data);
     }
 
     /**
@@ -84,7 +85,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->user = User::find($id);
+        list( $rules, $messages ) = $this->_rules(FALSE);
+
+        $this->validate( $request, $rules, $messages );
+
+        $this->user->name = $request->input('name');
+
+        if ($request->input('password')) {
+            $this->user->password = Hash::make($request->input('password'));
+        }
+
+        $this->user->save();
+        return redirect()->route('admin.users.index')->with('notify', 'Update.');
     }
 
     /**
@@ -106,17 +119,28 @@ class UserController extends Controller
         return back()->with(['nnotify' => 'User removed.']);
     }
 
-    private function _rules($insert = True) {
+    private function _rules($insert = TRUE) {
         $messages = [
             'name.required'  => 'Name is required.',
             'email.required' => 'Email is required.'
         ];
 
+        $hashed_password = $this->user->password;
+
         $rules = [
             'name'   => ['required', 'string', 'max:255'],
-            'email'  => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['string', 'min:8', 'confirmed'],
+            'oldPassword'=> "password_hash_check:$hashed_password|string|min:6",
+            'newPassword' => 'required_with:oldPassword|confirmed|min:6',
         ];
+
+        if ( $insert ) {
+            $rules = [
+                'name'   => ['required', 'string', 'max:255'],
+                'email'  => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ];
+        }
 
         return array($rules, $messages);
     }

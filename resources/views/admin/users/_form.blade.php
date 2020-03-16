@@ -5,7 +5,9 @@
         class="form-control  @error('name') is-invalid @enderror"
         id="name"
         name="name"
-        value="{{ old('name') }}"
+        autocomplete="name"
+        required
+        value="{{ $user->name? $user->name : old('name') }}"
         aria-describedby="nameHelp">
     <small id="nameHelp" class="form-text text-muted">Nomplete name, please.</small>
     @error('name')
@@ -21,7 +23,9 @@
         class="form-control  @error('email') is-invalid @enderror"
         id="email"
         name="email"
-        value="{{ old('email') }}"
+        autocomplete="email"
+        {{ $user->email? 'disabled readonly': '' }}
+        value="{{ $user->email? $user->email : old('email') }}"
         aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
     @error('email')
@@ -37,6 +41,8 @@
         class="form-control  @error('password') is-invalid @enderror"
         id="password"
         name="password"
+        value="{{ $user->password? $user->password : '' }}"
+        autocomplete="password"
         aria-describedby="passwordHelp">
     <small id="passwordHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
     @error('password')
@@ -52,6 +58,7 @@
         class="form-control  @error('password_confirmation') is-invalid @enderror"
         id="password_confirmation"
         name="password_confirmation"
+        value="{{ $user->password? $user->password : '' }}"
         aria-describedby="password_confirmationHelp">
     <small id="password_confirmationHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
     @error('password_confirmation')

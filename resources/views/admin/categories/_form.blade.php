@@ -7,7 +7,7 @@
         name="name"
         autocomplete="name"
         required
-        value="{{ $category->name? $category->name : old('name') }}"
+        value="{{ old('name', $category->name) }}"
         aria-describedby="nameHelp">
     <small id="nameHelp" class="form-text text-muted">Category for the products</small>
     @error('name')
@@ -24,7 +24,7 @@
         name="description"
         aria-describedby="descriptionHelp"
         class="form-control  @error('description') is-invalid @enderror"
-        rows="3">{{ $category->description? $category->description : '' }}</textarea>
+        rows="3">{{ old('description', $category->description) }}</textarea>
     <small id="descriptionHelp" class="form-text text-muted">Short description.</small>
     @error('description')
         <span class="invalid-feedback" role="alert">

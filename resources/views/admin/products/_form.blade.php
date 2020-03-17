@@ -7,7 +7,7 @@
         name="name"
         autocomplete="name"
         required
-        value="{{ $product->name? $product->name : old('name') }}"
+        value="{{ old('name', $product->name) }}"
         aria-describedby="nameHelp">
     <small id="nameHelp" class="form-text text-muted">Simple name</small>
     @error('name')
@@ -24,7 +24,7 @@
         name="description"
         aria-describedby="descriptionHelp"
         class="form-control  @error('description') is-invalid @enderror"
-        rows="2">{{ $product->description? $product->description : '' }}</textarea>
+        rows="2">{{ old('description', $product->description) }}</textarea>
     <small id="descriptionHelp" class="form-text text-muted">Short description.</small>
     @error('description')
         <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
         step="0.01"
         autocomplete="price"
         required
-        value="{{ $product->price? $product->price : old('price') }}"
+        value="{{ old('price', $product->price) }}"
         aria-describedby="priceHelp">
     <small id="priceHelp" class="form-text text-muted">Price of the product.</small>
     @error('price')
@@ -59,7 +59,7 @@
         name="long_description"
         aria-describedby="long_descriptionHelp"
         class="form-control  @error('long_description') is-invalid @enderror"
-        rows="4">{{ $product->long_description? $product->long_description : '' }}</textarea>
+        rows="4">{{ old('long_description', $product->long_description) }}</textarea>
     <small id="long_descriptionHelp" class="form-text text-muted">Long description of the product.</small>
     @error('long_description')
         <span class="invalid-feedback" role="alert">

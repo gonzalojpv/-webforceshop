@@ -7,7 +7,7 @@
         name="name"
         autocomplete="name"
         required
-        value="{{ $user->name? $user->name : old('name') }}"
+        value="{{ old('name', $user->name) }}"
         aria-describedby="nameHelp">
     <small id="nameHelp" class="form-text text-muted">Nomplete name, please.</small>
     @error('name')
@@ -25,7 +25,7 @@
         name="email"
         autocomplete="email"
         {{ $user->email? 'disabled readonly': '' }}
-        value="{{ $user->email? $user->email : old('email') }}"
+        value="{{ old('email', $user->email) }}"
         aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
     @error('email')
@@ -41,7 +41,7 @@
         class="form-control  @error('password') is-invalid @enderror"
         id="password"
         name="password"
-        value="{{ $user->password? $user->password : '' }}"
+        value="{{ old('password', $user->password) }}"
         autocomplete="password"
         aria-describedby="passwordHelp">
     <small id="passwordHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
@@ -58,7 +58,7 @@
         class="form-control  @error('password_confirmation') is-invalid @enderror"
         id="password_confirmation"
         name="password_confirmation"
-        value="{{ $user->password? $user->password : '' }}"
+        value="{{ old('password', $user->password) }}"
         aria-describedby="password_confirmationHelp">
     <small id="password_confirmationHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
     @error('password_confirmation')

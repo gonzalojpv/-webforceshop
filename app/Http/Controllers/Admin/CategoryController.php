@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Category;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['users'] = User::orderBy('created_at', 'desc')->get();
-        return view('admin.users.index', $data);
+        $data['categories'] = Category::orderBy('created_at', 'desc')->get();
+        return view('admin.categories.index', $data);
     }
 
     /**
@@ -27,8 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $data['user']   = new User();
-        return view('admin.users.create', $data);
+        $data['category']   = new Category();
+        return view('admin.categories.create', $data);
     }
 
     /**
@@ -39,20 +38,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->user = null;
-
         list( $rules, $messages ) = $this->_rules();
 
         $this->validate( $request, $rules, $messages );
 
-        $new_user = new User();
-        $new_user->name = $request->input('name');
-        $new_user->email = $request->input('email');
-        $new_user->password = Hash::make($request->input('password'));
-        $new_user->save();
+        $new_category = new Category();
+        $new_category->name = $request->input('name');
+        $new_category->description = $request->input('description');
+        $new_category->save();
 
         //return back()->with(['notify' => 'Usuario creado correctamente.']);
-        return redirect()->route('admin.users.index')->with('notify', 'Usuario creado correctamente.');
+        return redirect()->route('admin.categories.index')->with('notify', 'Category added successfully.');
     }
 
     /**
@@ -74,8 +70,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $data['user'] = User::find($id);
-        return view('admin.users.edit', $data);
+       $data['category'] = Category::find($id);
+        return view('admin.categories.edit', $data);
     }
 
     /**
@@ -87,19 +83,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->user = User::find($id);
+        $category = Category::find($id);
         list( $rules, $messages ) = $this->_rules(FALSE);
 
         $this->validate( $request, $rules, $messages );
 
-        $this->user->name = $request->input('name');
+        $category->name = $request->input('name');
 
-        if ($request->input('password')) {
-            $this->user->password = Hash::make($request->input('password'));
+        if ($request->input('description')) {
+            $category->description = $request->input('description');
         }
 
-        $this->user->save();
-        return redirect()->route('admin.users.index')->with('notify', 'Update.');
+        $category->save();
+        return redirect()->route('admin.categories.index')->with('notify', 'Update.');
     }
 
     /**
@@ -110,43 +106,25 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $category = Category::find($id);
 
-        if ( ! $user ) {
-            return back()->with(['error' => 'User no found.']);
+        if ( ! $category ) {
+            return back()->with(['error' => 'category no found.']);
         }
 
-        $user->delete();
+        $category->delete();
 
-        return back()->with(['nnotify' => 'User removed.']);
+        return back()->with(['nnotify' => 'category removed.']);
     }
 
     private function _rules($insert = TRUE) {
-
-        $hashed_password = null;
         $messages = [
             'name.required'  => 'Name is required.',
-            'email.required' => 'Email is required.'
         ];
-
-        if ($this->user) {
-            $hashed_password = $this->user->password;
-        }
 
         $rules = [
             'name'   => ['required', 'string', 'max:255'],
-            'password' => ['string', 'min:8', 'confirmed'],
-            'oldPassword'=> "password_hash_check:$hashed_password|string|min:6",
-            'newPassword' => 'required_with:oldPassword|confirmed|min:6',
         ];
-
-        if ( $insert ) {
-            $rules = [
-                'name'   => ['required', 'string', 'max:255'],
-                'email'  => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ];
-        }
 
         return array($rules, $messages);
     }

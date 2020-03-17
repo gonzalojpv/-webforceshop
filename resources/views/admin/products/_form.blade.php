@@ -17,6 +17,17 @@
     @enderror
 </div>
 <div class="form-group">
+    <label for="name">Image Product</label>
+    <div class="custom-file">
+        <input
+            type="file"
+            class="custom-file-input"
+            id="image"
+            name="image">
+        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+    </div>
+</div>
+<div class="form-group">
     <label for="description">Short Description</label>
     <textarea
         class="form-control"

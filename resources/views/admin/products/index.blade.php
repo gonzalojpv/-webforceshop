@@ -31,6 +31,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">Nº</th>
+                                <th>Picture</th>
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Description</th>
@@ -42,7 +43,13 @@
                             @foreach ($products as $index => $product)
                                 <tr>
                                     <td class="text-center" width="10%">{{ $index + 1 }}</td>
-                                    <td>{{ $product->name }}</td>
+                                    <td>
+                                        @if( $product->getFirstMediaUrl('images') )
+                                        <img class="img-thumbnail" src="{{ $product->getFirstMediaUrl('images') }}" />
+                                        @endif
+                                    </td><td>
+                                        {{ $product->name }}
+                                    </td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->category? $product->category->name : 'General' }}</td>

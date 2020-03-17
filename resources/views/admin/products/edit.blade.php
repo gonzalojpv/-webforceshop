@@ -24,7 +24,10 @@
                     <p class="text-right">Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla.</p>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route('admin.products.update', $product->id) }}" method="POST">
+                    <form
+                        action="{{ route('admin.products.update', $product->id) }}"
+                        enctype="multipart/form-data"
+                        method="POST">
                         @csrf
                         @method('PUT')
                         @include('admin.products._form')

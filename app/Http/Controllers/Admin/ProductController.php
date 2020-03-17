@@ -51,6 +51,11 @@ class ProductController extends Controller
         $new_product->price = $request->input('price');
         $new_product->save();
 
+        //Store Image
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $new_product->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+
         //return back()->with(['notify' => 'Usuario creado correctamente.']);
         return redirect()->route('admin.products.index')->with('notify', 'Product added successfully.');
     }
@@ -98,6 +103,12 @@ class ProductController extends Controller
         $product->price = $request->input('price');
 
         $product->save();
+
+        //Store Image
+        if( $request->hasFile('image') && $request->file('image')->isValid() ) {
+            $product->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+
         return redirect()->route('admin.products.index')->with('notify', 'Update.');
     }
 

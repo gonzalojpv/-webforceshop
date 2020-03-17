@@ -6,7 +6,12 @@
             <div class="col-12 col-sm-10">
                 <div class="header-content">
                     <div class="page-title">
-                        <h4 class="font-weight-bolder"><span class="font-weight-bold">Category</span> - Edit</h4>
+                        <h4 class="font-weight-bolder">
+                            <a href="{{ route('admin.categories.index') }}">
+                                <span class="font-weight-bold">Categories</span>
+                            </a>
+                            - Edit
+                        </h4>
                     </div>
                 </div>
             </div>

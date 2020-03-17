@@ -39,6 +39,7 @@
         class="form-control  @error('price') is-invalid @enderror"
         id="price"
         name="price"
+        step="0.01"
         autocomplete="price"
         required
         value="{{ $product->price? $product->price : old('price') }}"

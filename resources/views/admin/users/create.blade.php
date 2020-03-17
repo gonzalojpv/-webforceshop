@@ -6,7 +6,12 @@
             <div class="col-12 col-sm-10">
                 <div class="header-content">
                     <div class="page-title">
-                        <h4 class="font-weight-bolder"><span class="font-weight-bold">Users</span> - Add user</h4>
+                        <h4 class="font-weight-bolder">
+                            <a href="{{ route('admin.users.index') }}">
+                                <span class="font-weight-bold">Users</span>
+                            </a>
+                            - Create
+                            </h4>
                     </div>
                 </div>
             </div>

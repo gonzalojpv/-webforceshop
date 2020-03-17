@@ -3,6 +3,7 @@
         <Header/>
         <Slider/>
         <TextBlock/>
+        <GridProducts/>
     </section>
 </template>
 
@@ -10,15 +11,14 @@
 import Header from '../components/Header';
 import Slider from '../components/Slider';
 import TextBlock from '../components/TextBlock';
+import GridProducts from '../components/GridProducts';
 
 export default {
     components: {
         Header,
         Slider,
-        TextBlock
+        TextBlock,
+        GridProducts
     },
-    mounted() {
-        console.log('Holas');
-    }
 }
 </script>

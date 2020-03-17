@@ -12,8 +12,6 @@
 */
 
 
-Route::get('/{any}', 'SpaController@index')->where('any', '.*');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -27,3 +25,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'as' => 'a
         'products' => 'Admin\ProductController',
     ]);
 });
+
+Route::get('/{any}', 'SpaController@index')->where('any', '.*');

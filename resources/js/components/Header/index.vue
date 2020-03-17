@@ -1,8 +1,8 @@
 <template>
-    <header>
-        <v-card flat tile dark>
+    <header class="header">
+        <v-card flat tile>
             <v-container>
-                <v-toolbar>
+                <v-toolbar flat>
                     <v-toolbar-title>
                         <h2>WepForce<span>Shop</span></h2>
                     </v-toolbar-title>
@@ -27,20 +27,37 @@ export default {
 <style lang="scss" scoped>
 @import '../../../sass/_variables';
 
-header.v-sheet {
+header.header {
+    position: absolute;
     background-color: transparent !important;
+    width: 100%;
+    z-index: 1030;
+    webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 
-    div.v-toolbar__content {
-        div.v-toolbar__title {
-            h2 {
-                font-size: 2.25rem;
-                line-height: 1.2;
-                color: map-get($theme-colors, white);
-                font-weight: bold;
-                font-family: $font-header;
+    div.v-card {
+        background-color: transparent !important;
 
-                span {
-                    color: map-get($theme-colors, primary);
+        header.v-sheet {
+            background-color: transparent !important;
+
+            div.v-toolbar__content {
+                background-color: transparent !important;
+
+                div.v-toolbar__title {
+                    h2 {
+                        font-size: 2.25rem;
+                        line-height: 1.2;
+                        color: map-get($theme-colors, white);
+                        font-weight: bold;
+                        font-family: $font-header;
+
+                        span {
+                            color: map-get($theme-colors, primary);
+                        }
+                    }
                 }
             }
         }

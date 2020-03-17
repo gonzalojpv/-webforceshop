@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <a href="{{ route('admin.users.index') }}"  class="btn btn-link btn-lg btn-block">Users</a>
                     <a href="{{ route('admin.categories.index') }}" class="btn btn-link btn-lg btn-block">Category</a>
-                    <a href="#" class="btn btn-link btn-lg btn-block">Products</a>
+                    <a href="{{ route('admin.products.index') }}" class="btn btn-link btn-lg btn-block">Products</a>
                 </div>
             </div>
         </div>

@@ -29,5 +29,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], fu
     Route::resources([
         'users' => 'Admin\UserController',
         'categories' => 'Admin\CategoryController',
+        'products' => 'Admin\ProductController',
     ]);
 });

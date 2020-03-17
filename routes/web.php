@@ -18,14 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@dash')->name('admin')->middleware('auth', 'admin');
 
 
-
-Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'as' => 'admin.'], function() {
     Route::resources([
         'users' => 'Admin\UserController',
         'categories' => 'Admin\CategoryController',

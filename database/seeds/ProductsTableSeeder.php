@@ -14,8 +14,16 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class, 5)->create();
-        factory(Product::class, 100)->create();
-        factory(ProductImage::class, 200)->create();
+        $categories = factory(Category::class, 5)->create();
+        $categories->each( function($category) {
+            $products = factory(Product::class, 13)->make();
+            $category->products()->saveMany($products);
+
+            $products->each(function ($p) {
+                $images = factory(ProductImage::class, 3)->make();
+                $p->images()->saveMany($images);
+                $p->addMediaFromUrl("http://martinezbrands.com/wp-content/uploads/2019/08/antonio-aguilar.jpg")->toMediaCollection('images');
+            });
+        });
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="add-to-cart">
-        <p class="price">$100.00</p>
+        <p class="price">${{ getProduct.price }}</p>
         <form>
             <div class="form-group row">
                 <label for="" class="col-4 col-form-label">Quantity</label>
@@ -22,10 +22,22 @@
                 class="single_add_to_cart_button">Add to cart</button>
         </form>
         <div class="product_meta">
-            Category: <span>General</span>
+            Category: <span>{{ getProduct.category }}</span>
         </div>
     </div>
 </template>
+
+<script>
+import {
+    productsComputed,
+    } from '../../store/helper';
+
+export default {
+    computed: {
+        ...productsComputed,
+    },
+}
+</script>
 
 <style lang="scss" scoped>
     @import '../../../sass/_variables';

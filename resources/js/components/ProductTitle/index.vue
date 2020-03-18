@@ -18,6 +18,7 @@
 import {
     productsComputed,
     } from '../../store/helper';
+
 export default {
     data: () => ({
       items: [

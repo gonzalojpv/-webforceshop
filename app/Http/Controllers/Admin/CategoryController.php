@@ -47,8 +47,8 @@ class CategoryController extends Controller
         $new_category->description = $request->input('description');
         $new_category->save();
 
-        //return back()->with(['notify' => 'Usuario creado correctamente.']);
-        return redirect()->route('admin.categories.index')->with('notify', 'Category added successfully.');
+        $notification = 'Category added successfully.';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -95,7 +95,9 @@ class CategoryController extends Controller
         }
 
         $category->save();
-        return redirect()->route('admin.categories.index')->with('notify', 'Update.');
+
+        $notification = 'Category Update.';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -114,7 +116,8 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return back()->with(['nnotify' => 'category removed.']);
+        $notification = 'Category removed.';
+        return back()->with(compact('notification'));
     }
 
     private function _rules($insert = TRUE) {

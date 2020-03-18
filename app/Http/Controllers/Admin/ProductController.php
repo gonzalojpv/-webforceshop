@@ -56,8 +56,8 @@ class ProductController extends Controller
             $new_product->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        //return back()->with(['notify' => 'Usuario creado correctamente.']);
-        return redirect()->route('admin.products.index')->with('notify', 'Product added successfully.');
+        $notification = 'Product added successfully.';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -109,7 +109,8 @@ class ProductController extends Controller
             $product->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        return redirect()->route('admin.products.index')->with('notify', 'Update.');
+        $notification = 'Product update successfully.';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -128,7 +129,8 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return back()->with(['nnotify' => 'Product removed.']);
+        $notification = 'Product removed.';
+        return back()->with(compact('notification'));
     }
 
     private function _rules() {

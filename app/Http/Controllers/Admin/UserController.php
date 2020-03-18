@@ -51,8 +51,8 @@ class UserController extends Controller
         $new_user->password = Hash::make($request->input('password'));
         $new_user->save();
 
-        //return back()->with(['notify' => 'Usuario creado correctamente.']);
-        return redirect()->route('admin.users.index')->with('notify', 'Usuario creado correctamente.');
+        $notification = 'User created successfully.';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -99,7 +99,9 @@ class UserController extends Controller
         }
 
         $this->user->save();
-        return redirect()->route('admin.users.index')->with('notify', 'Update.');
+
+        $notification = 'User update successfully.';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -118,7 +120,8 @@ class UserController extends Controller
 
         $user->delete();
 
-        return back()->with(['nnotify' => 'User removed.']);
+        $notification = 'User removed.';
+        return back()->with(compact('notification'));
     }
 
     private function _rules($insert = TRUE) {

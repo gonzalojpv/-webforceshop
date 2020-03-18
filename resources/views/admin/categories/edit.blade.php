@@ -35,4 +35,9 @@
         </div>
     </div>
 </div>
+    @if ( session('notification') )
+        <script>
+            swal("Good job!", "{{ session('notification') }}", "success");
+        </script>
+    @endif
 @endsection

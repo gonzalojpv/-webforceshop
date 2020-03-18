@@ -11,10 +11,10 @@
                     <a href="#" class="product-card-anchor">
                         <div class="product-card">
                             <div
-                                v-bind:style="{ 'background-image': 'url(' + src + ')' }"
+                                v-bind:style="{ 'background-image': 'url(' + product.featured_image + ')' }"
                                 class="product-card-image"></div>
-                            <h5 class="product-card-title">Titli</h5>
-                            <p class="product-card-text">des</p>
+                            <h5 class="product-card-title">{{ product.name }}</h5>
+                            <p class="product-card-text">{{ product.description }}</p>
                             <a class="btn-discover" href="/">Discover it</a>
                         </div>
                     </a>

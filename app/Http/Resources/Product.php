@@ -19,9 +19,9 @@ class Product extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->price,
-            'description' => $this->detail,
-            'created_at' => $this->created_at->format('d/m/Y'),
-            'updated_at' => $this->updated_at->format('d/m/Y'),
+            'description' => $this->description,
+            'long_description' => $this->long_description,
+            'featured_image' => $this->getFirstMediaUrl('images'),
         ];
     }
 }

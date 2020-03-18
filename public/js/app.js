@@ -3463,15 +3463,18 @@ var render = function() {
                       _c("div", { staticClass: "product-card" }, [
                         _c("div", {
                           staticClass: "product-card-image",
-                          style: { "background-image": "url(" + _vm.src + ")" }
+                          style: {
+                            "background-image":
+                              "url(" + product.featured_image + ")"
+                          }
                         }),
                         _vm._v(" "),
                         _c("h5", { staticClass: "product-card-title" }, [
-                          _vm._v("Titli")
+                          _vm._v(_vm._s(product.name))
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "product-card-text" }, [
-                          _vm._v("des")
+                          _vm._v(_vm._s(product.description))
                         ]),
                         _vm._v(" "),
                         _c(

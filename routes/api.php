@@ -24,6 +24,9 @@ Route::post('login', 'Api\RegisterController@login');
 Route::resource('products', 'Api\ProductController')->only([
     'index', 'show'
 ]);
+Route::resource('cart', 'Api\CartDetailConroller')->only([
+    'index', 'show', 'create', 'store', 'update', 'destroy'
+]);
 
 Route::middleware('auth:api')->group( function () {
     Route::resource('products', 'Api\ProductController')->only([

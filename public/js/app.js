@@ -1991,6 +1991,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/helper */ "./resources/js/store/helper.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2017,13 +2024,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['category', 'product', 'description'],
   data: function data() {
     return {
       featured_image: 'http://martinezbrands.com/wp-content/uploads/2019/08/antonio-aguilar.jpg'
     };
-  }
+  },
+  mounted: function mounted() {
+    this.fetchProduct({
+      id: this.$route.params.id
+    }).then();
+  },
+  computed: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["productsComputed"]),
+  methods: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["productsMethods"])
 });
 
 /***/ }),
@@ -2037,6 +2053,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/helper */ "./resources/js/store/helper.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2053,6 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2066,7 +2090,8 @@ __webpack_require__.r(__webpack_exports__);
         href: 'breadcrumbs_link_2'
       }]
     };
-  }
+  },
+  computed: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["productsComputed"])
 });
 
 /***/ }),
@@ -3809,23 +3834,34 @@ var render = function() {
                 _c("div", {
                   staticClass: "single-product-featured-image",
                   style: {
-                    "background-image": "url(" + _vm.featured_image + ")"
+                    "background-image":
+                      "url(" + _vm.getProduct.featured_image + ")"
                   }
                 })
               ]),
               _vm._v(" "),
               _c("v-col", { attrs: { col: "12", sm: "12", md: "6" } }, [
                 _c("div", { staticClass: "single-product-entry" }, [
-                  _c("h3", [_vm._v("Vivamus integer non suscipit")]),
+                  _c("h3", [_vm._v(_vm._s(_vm.getProduct.name))]),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
                   _c("div", { staticClass: "single-product-entry-content" }, [
-                    _c("p", [
-                      _vm._v(
-                        "Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.\n\n                        Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit, euismod libero facilisi aptent elementum felis blandit cursus gravida sociis erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia conubia mauris tempor, etiam ultricies proin quisque lectus sociis id tristique, integer phasellus taciti pretium adipiscing tortor sagittis ligula.\n                        "
-                      )
-                    ])
+                    _vm.getProduct.long_description
+                      ? _c("p", [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.getProduct.long_description) +
+                              "\n                        "
+                          )
+                        ])
+                      : _c("p", [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.getProduct.description) +
+                              "\n                        "
+                          )
+                        ])
                   ])
                 ])
               ])
@@ -3877,7 +3913,7 @@ var render = function() {
                   [
                     _c("h1", [
                       _vm._v("Category: "),
-                      _c("span", [_vm._v("Tolasasas")])
+                      _c("span", [_vm._v(_vm._s(_vm.getProduct.category))])
                     ]),
                     _vm._v(" "),
                     _c("hr"),
@@ -62176,8 +62212,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* Products */
 
-var productsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAllProducts']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['src', 'products']));
-var productsMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchProducts']);
+var productsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAllProducts', 'getProduct']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['products', 'product']));
+var productsMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchProducts', 'fetchProduct']);
 
 /***/ }),
 
@@ -62221,78 +62257,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var baseURL = 'http://webforceshop.test/api/';
 var state = {
-  products: [{
-    "id": 2,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": 'jojojojo',
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 3,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 2,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 3,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 2,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 3,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 2,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 3,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 2,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }, {
-    "id": 3,
-    "name": "fuga possimus quis",
-    "price": 52.5,
-    "description": null,
-    "created_at": "17/03/2020",
-    "updated_at": "17/03/2020"
-  }],
-  src: 'http://martinezbrands.com/wp-content/uploads/2019/08/rancho-viejo.jpg'
+  products: [],
+  product: {}
 };
 var mutations = {
   FETCH_PRODUCTS: function FETCH_PRODUCTS(state, products) {
@@ -62300,11 +62266,17 @@ var mutations = {
   },
   NEW_PRODUCTO: function NEW_PRODUCTO(state, newProducto) {
     state.products.push(newProducto);
+  },
+  FETCH_PRODUCT: function FETCH_PRODUCT(state, product) {
+    state.product = product;
   }
 };
 var getters = {
   getAllProducts: function getAllProducts(state) {
     return state.products;
+  },
+  getProduct: function getProduct(state) {
+    return state.product;
   }
 };
 var actions = {
@@ -62313,6 +62285,17 @@ var actions = {
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(baseURL, "products")).then(function (response) {
       commit("FETCH_PRODUCTS", response.data.data);
       return response.data;
+    })["catch"](function (error) {
+      return Promise.reject(error);
+    });
+  },
+  fetchProduct: function fetchProduct(_ref2, _ref3) {
+    var commit = _ref2.commit;
+    var id = _ref3.id;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(baseURL, "products/").concat(id, "/")).then(function (response) {
+      var product = response.data.data;
+      commit("FETCH_PRODUCT", product);
+      return product;
     })["catch"](function (error) {
       return Promise.reject(error);
     });

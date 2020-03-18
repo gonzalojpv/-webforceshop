@@ -4,17 +4,19 @@
             <v-row>
                 <v-col col="12" sm="12" md="6">
                     <div
-                        v-bind:style="{ 'background-image': 'url(' + featured_image + ')' }"
+                        v-bind:style="{ 'background-image': 'url(' + getProduct.featured_image + ')' }"
                         class="single-product-featured-image"></div>
                 </v-col>
                 <v-col col="12" sm="12" md="6">
                     <div class="single-product-entry">
-                        <h3>Vivamus integer non suscipit</h3>
+                        <h3>{{ getProduct.name }}</h3>
                         <hr>
                         <div class="single-product-entry-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.
-
-                            Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit, euismod libero facilisi aptent elementum felis blandit cursus gravida sociis erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia conubia mauris tempor, etiam ultricies proin quisque lectus sociis id tristique, integer phasellus taciti pretium adipiscing tortor sagittis ligula.
+                            <p v-if="getProduct.long_description">
+                                {{ getProduct.long_description }}
+                            </p>
+                            <p v-else>
+                                {{ getProduct.description }}
                             </p>
                         </div>
                     </div>
@@ -25,12 +27,25 @@
 </template>
 
 <script>
+import {
+    productsComputed,
+    productsMethods
+    } from '../../store/helper';
+
 export default {
-    props:[ 'category', 'product', 'description' ],
     data() {
         return {
             featured_image: 'http://martinezbrands.com/wp-content/uploads/2019/08/antonio-aguilar.jpg',
         };
+    },
+    mounted() {
+        this.fetchProduct({id: this.$route.params.id}).then();
+    },
+    computed: {
+        ...productsComputed,
+    },
+    methods: {
+        ...productsMethods,
     }
 }
 </script>

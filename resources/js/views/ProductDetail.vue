@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import ProductTitle from '../components/ProductTitle';
 import ProductContent from '../components/ProductContent';
 
+
 export default {
     components: {
         Header,

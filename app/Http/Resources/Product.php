@@ -22,6 +22,7 @@ class Product extends JsonResource
             'description' => $this->description,
             'long_description' => $this->long_description,
             'featured_image' => $this->getFirstMediaUrl('images'),
+            'category' => ($this->category? $this->category->name : 'General' ),
         ];
     }
 }

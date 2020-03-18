@@ -4,7 +4,7 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <h1>Category: <span>Tolasasas</span></h1>
+                        <h1>Category: <span>{{ getProduct.category }}</span></h1>
                         <hr>
                         <v-breadcrumbs :items="items" large></v-breadcrumbs>
                     </v-col>
@@ -15,6 +15,9 @@
 </template>
 
 <script>
+import {
+    productsComputed,
+    } from '../../store/helper';
 export default {
     data: () => ({
       items: [
@@ -30,6 +33,9 @@ export default {
         },
       ],
     }),
+    computed: {
+        ...productsComputed,
+    },
 }
 </script>
 

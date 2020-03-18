@@ -2,19 +2,8 @@ import axios from 'axios'
 
 const baseURL = 'http://webforceshop.test/api/';
 const state = {
-    products: [
-            { "id": 2, "name": "fuga possimus quis", "price": 52.5, "description": 'jojojojo', "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 3, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 2, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 3, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 2, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 3, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 2, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 3, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 2, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-            { "id": 3, "name": "fuga possimus quis", "price": 52.5, "description": null, "created_at": "17/03/2020", "updated_at": "17/03/2020" },
-        ],
-    src: 'http://martinezbrands.com/wp-content/uploads/2019/08/rancho-viejo.jpg',
+    products: [],
+    product: {},
 }
 
 const mutations = {
@@ -24,11 +13,17 @@ const mutations = {
     NEW_PRODUCTO(state, newProducto) {
         state.products.push(newProducto);
     },
+    FETCH_PRODUCT(state, product) {
+        state.product = product;
+    },
 }
 
 const getters = {
     getAllProducts(state) {
         return state.products;
+    },
+    getProduct(state) {
+        return state.product;
     }
 }
 
@@ -41,6 +36,18 @@ const actions = {
 
                 return response.data;
             }).catch(error => {
+                return Promise.reject(error);
+        });
+    },
+    fetchProduct({ commit }, { id }) {
+        return axios.get(`${baseURL}products/${id}/`)
+            .then((response) => {
+
+                const product = response.data.data;
+                commit("FETCH_PRODUCT", product);
+
+                return product;
+            }).catch((error) => {
                 return Promise.reject(error);
         });
     }

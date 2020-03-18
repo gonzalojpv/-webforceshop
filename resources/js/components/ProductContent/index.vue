@@ -18,6 +18,7 @@
                             <p v-else>
                                 {{ getProduct.description }}
                             </p>
+                            <AddToCart/>
                         </div>
                     </div>
                 </v-col>
@@ -27,12 +28,16 @@
 </template>
 
 <script>
+import AddToCart from '../AddToCart';
 import {
     productsComputed,
     productsMethods
     } from '../../store/helper';
 
 export default {
+    components: {
+        AddToCart,
+    },
     data() {
         return {
             featured_image: 'http://martinezbrands.com/wp-content/uploads/2019/08/antonio-aguilar.jpg',
@@ -55,6 +60,8 @@ export default {
     @import '../../../sass/common/_fonts';
 
     section.product-content {
+        font-family: $font-family-base;
+
         div.single-product-featured-image {
             background-position: center;
             background-repeat: no-repeat;
@@ -79,9 +86,10 @@ export default {
             hr {
                 border-color: map-get($theme-colors, dark);
                 opacity: 0.25;
-                margin-bottom: 24px;
+                margin-bottom: 1.5rem;
                 margin-left: 0;
                 margin-right: 0;
+                border-width: 0.062rem;
             }
 
             div.single-product-entry-content {

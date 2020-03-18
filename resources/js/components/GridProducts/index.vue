@@ -50,6 +50,8 @@ export default {
     @import '../../../sass/common/_fonts';
 
     .grid-products {
+        font-family: $font-family-base;
+
         .product-card-anchor {
             position: relative;
             color: map-get($theme-colors, dark);

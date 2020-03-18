@@ -7,7 +7,7 @@ Vue.use(Vuetify);
 Vue.use(VueRouter)
 
 import App from './views/App'
-import Hello from './views/Hello'
+import ProductDetail from './views/ProductDetail'
 import Home from './views/Home'
 
 import {store} from './store';
@@ -21,9 +21,9 @@ const router = new VueRouter({
             component: Home
         },
         {
-            path: '/hello',
-            name: 'hello',
-            component: Hello,
+            path: '/product/:id',
+            name: 'product_detail',
+            component: ProductDetail,
         },
     ],
 });

@@ -15,8 +15,10 @@
 
 <script>
 
-export default {}
+export default {
+}
 </script>
+
 <style lang="scss" scoped>
 @import '../../../sass/_variables';
 
@@ -29,6 +31,10 @@ header.header {
     -moz-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
+
+    &.dark {
+        background-color: map-get($theme-colors, dark) !important;
+    }
 
     div.v-card {
         background-color: transparent !important;

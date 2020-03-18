@@ -8,7 +8,7 @@
                     sm="4"
                     md="3"
                     lg="3">
-                    <a href="#" class="product-card-anchor">
+                    <router-link :to="{path: '/product/' + product.id}" class="product-card-anchor">
                         <div class="product-card">
                             <div
                                 v-bind:style="{ 'background-image': 'url(' + product.featured_image + ')' }"
@@ -17,7 +17,7 @@
                             <p class="product-card-text">{{ product.description }}</p>
                             <a class="btn-discover" href="/">Discover it</a>
                         </div>
-                    </a>
+                    </router-link >
                 </v-col>
             </v-row>
         </v-container>

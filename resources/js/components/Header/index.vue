@@ -15,14 +15,7 @@
 
 <script>
 
-export default {
-    data () {
-        return {}
-    },
-    mounted() {
-        console.log('header');
-    },
-}
+export default {}
 </script>
 <style lang="scss" scoped>
 @import '../../../sass/_variables';

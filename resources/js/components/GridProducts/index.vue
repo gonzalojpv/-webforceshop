@@ -2,7 +2,12 @@
     <section class="grid-products">
         <v-container>
             <v-row>
-                <v-col col="12" md="4">
+                <v-col
+                    v-for="(product, i) in getAllProducts" :key="i"
+                    col="12"
+                    sm="4"
+                    md="3"
+                    lg="3">
                     <a href="#" class="product-card-anchor">
                         <div class="product-card">
                             <div
@@ -20,37 +25,22 @@
 </template>
 
 <script>
+import {
+    productsComputed,
+    productsMethods
+    } from '../../store/helper';
+
 export default {
-    data() {
-        return {
-            src: 'http://martinezbrands.com/wp-content/uploads/2019/08/rancho-viejo.jpg',
-            products: [
-                {
-                    "id": 2,
-                    "name": "fuga possimus quis",
-                    "price": 52.5,
-                    "description": null,
-                    "created_at": "17/03/2020",
-                    "updated_at": "17/03/2020"
-                },
-                {
-                    "id": 3,
-                    "name": "fuga possimus quis",
-                    "price": 52.5,
-                    "description": null,
-                    "created_at": "17/03/2020",
-                    "updated_at": "17/03/2020"
-                },
-                {
-                    "id": 4,
-                    "name": "fuga possimus quis",
-                    "price": 52.5,
-                    "description": null,
-                    "created_at": "17/03/2020",
-                    "updated_at": "17/03/2020"
-                },
-            ],
-        };
+    mounted() {
+        this.fetchProducts().then(response => {
+            console.log(response);
+        });
+    },
+    computed: {
+        ...productsComputed,
+    },
+    methods: {
+        ...productsMethods,
     }
 }
 </script>

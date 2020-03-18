@@ -10,6 +10,8 @@ import App from './views/App'
 import Hello from './views/Hello'
 import Home from './views/Home'
 
+import {store} from './store';
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -31,4 +33,5 @@ const app = new Vue({
     components: { App },
     vuetify: new Vuetify(),
     router,
+    store,
 });

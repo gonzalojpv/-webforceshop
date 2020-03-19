@@ -17,3 +17,11 @@ export const cartComputed = {
 };
 
 export const cartMethods = mapActions(['addToCard', ]);
+
+/* Billing */
+export const billingComputed = {
+    ...mapGetters(['getBillingData',]),
+    ...mapState(['billing']),
+};
+
+export const billingMethods = mapActions(['addBillingData', ]);

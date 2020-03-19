@@ -1,16 +1,15 @@
 <template>
     <section class="billing-detail">
-        <v-form v-model="valid">
+        <v-form @submit="onSubmit" v-model="valid">
             <v-container>
                 <v-row>
-                    <v-col>
-                        <h2>Billing <span>details</span></h2>
-                        <hr>
-                    </v-col>
-                </v-row>
-
-                <v-row>
                     <v-col cols="12" md="6">
+                        <v-row>
+                            <v-col>
+                                <h2>Billing <span>details</span></h2>
+                                <hr>
+                            </v-col>
+                        </v-row>
                         <v-row>
                             <v-col cols="12" md="6">
                               <v-text-field
@@ -69,10 +68,6 @@
                                     required></v-text-field>
                             </v-col>
                         </v-row>
-
-                    </v-col>
-                    <v-col cols="12" md="6">
-
                         <v-row>
                             <v-col cols="12" md="6">
                                 <v-text-field
@@ -96,6 +91,27 @@
                                     label="Order notes (optional)"></v-textarea>
                             </v-col>
                         </v-row>
+
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <CartTable/>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12">
+                        <v-btn
+                            type="submit"
+                            block
+                            dark>Place Order</v-btn>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12">
+                        <div class="text-center">
+                            <p class="order-message text-center">
+                            Any personal information we request will be used only to process your order or provide support. Under no circumstances will we sell or otherwise give away your information.
+                        </p>
+                        </div>
                     </v-col>
                 </v-row>
             </v-container>
@@ -104,7 +120,17 @@
 </template>
 
 <script>
+    import {
+        billingMethods,
+        billingComputed
+    } from '../../store/helper';
+    import swal from 'sweetalert';
+    import CartTable from '../../components/CartTable';
+
     export default {
+        components: {
+            CartTable,
+        },
         data: () => ({
             valid: false,
             firstname: '',
@@ -126,6 +152,32 @@
                 v => /.+@.+/.test(v) || 'E-mail must be valid',
             ],
         }),
+        methods: {
+            ...billingMethods,
+            onSubmit(evt) {
+                evt.preventDefault();
+
+                if ( this.valid ) {
+                    this.addBillingData({
+                        firstname: this.firstname,
+                        lastname: this.lastname,
+                        country: this.country,
+                        address: this.address,
+                        city: this.city,
+                        state: this.state,
+                        zipcode: this.zipcode,
+                        phone: this.phone,
+                        notes: this.notes,
+                    });
+                }
+                else {
+                    swal("Oops!", "Please, complete de Billing Form", "warning");
+                }
+            }
+        },
+        computed: {
+            ...billingComputed,
+        },
     }
 </script>
 
@@ -157,6 +209,15 @@
             @media #{map-get($display-breakpoints, 'lg-and-up')} {
                 margin: 40px 0;
             }
+        }
+
+        p.order-message {
+            width: 50%;
+            margin: 0 auto;
+            text-align:center;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
         }
     }
 </style>

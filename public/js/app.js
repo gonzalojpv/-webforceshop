@@ -1988,6 +1988,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/helper */ "./resources/js/store/helper.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_CartTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/CartTable */ "./resources/js/components/CartTable/index.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2093,7 +2103,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CartTable: _components_CartTable__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   data: function data() {
     return {
       valid: false,
@@ -2118,7 +2150,29 @@ __webpack_require__.r(__webpack_exports__);
         return /.+@.+/.test(v) || 'E-mail must be valid';
       }]
     };
-  }
+  },
+  methods: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["billingMethods"], {
+    onSubmit: function onSubmit(evt) {
+      evt.preventDefault();
+
+      if (this.valid) {
+        this.addBillingData({
+          firstname: this.firstname,
+          lastname: this.lastname,
+          country: this.country,
+          address: this.address,
+          city: this.city,
+          state: this.state,
+          zipcode: this.zipcode,
+          phone: this.phone,
+          notes: this.notes
+        });
+      } else {
+        sweetalert__WEBPACK_IMPORTED_MODULE_1___default()("Oops!", "Please, complete de Billing Form", "warning");
+      }
+    }
+  }),
+  computed: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["billingComputed"])
 });
 
 /***/ }),
@@ -2132,20 +2186,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2565,7 +2605,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header */ "./resources/js/components/Header/index.vue");
 /* harmony import */ var _components_BillingDetail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/BillingDetail */ "./resources/js/components/BillingDetail/index.vue");
-/* harmony import */ var _components_CartTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CartTable */ "./resources/js/components/CartTable/index.vue");
 //
 //
 //
@@ -2573,15 +2612,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Header: _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"],
-    BillingDetail: _components_BillingDetail__WEBPACK_IMPORTED_MODULE_1__["default"],
-    CartTable: _components_CartTable__WEBPACK_IMPORTED_MODULE_2__["default"]
+    BillingDetail: _components_BillingDetail__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -2690,7 +2726,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Osw
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nh1[data-v-1dc56bd8],\nh2[data-v-1dc56bd8],\nh3[data-v-1dc56bd8],\nh4[data-v-1dc56bd8],\nh5[data-v-1dc56bd8],\nh6[data-v-1dc56bd8] {\n  font-family: \"Oswald\", sans-serif;\n  font-weight: 400;\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-1dc56bd8],\nh2[data-v-1dc56bd8],\nh3[data-v-1dc56bd8],\nh4[data-v-1dc56bd8],\nh5[data-v-1dc56bd8],\nh6[data-v-1dc56bd8] {\n    font-weight: 500;\n}\n}\nh1[data-v-1dc56bd8] {\n  font-size: 3.375rem;\n  line-height: 1.1;\n}\n@media only screen and (min-width: 768px) {\nh1[data-v-1dc56bd8] {\n    font-size: 3.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-1dc56bd8] {\n    font-size: 4rem;\n}\n}\nh2[data-v-1dc56bd8] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n}\n@media only screen and (min-width: 768px) {\nh2[data-v-1dc56bd8] {\n    font-size: 2.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh2[data-v-1dc56bd8] {\n    font-size: 2.75rem;\n}\n}\nh3[data-v-1dc56bd8] {\n  font-size: 1.875rem;\n  line-height: 1.25;\n}\n@media only screen and (min-width: 768px) {\nh3[data-v-1dc56bd8] {\n    font-size: 2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh3[data-v-1dc56bd8] {\n    font-size: 2.125rem;\n}\n}\nh4[data-v-1dc56bd8] {\n  font-size: 1.1rem;\n  line-height: 1.33;\n}\n@media only screen and (min-width: 768px) {\nh4[data-v-1dc56bd8] {\n    font-size: 1.2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh4[data-v-1dc56bd8] {\n    font-size: 1.3rem;\n}\n}\nh5[data-v-1dc56bd8] {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}\nh6[data-v-1dc56bd8] {\n  font-size: 1rem;\n  line-height: 1.5rem;\n}\nsection.billing-detail[data-v-1dc56bd8] {\n  padding-top: 9rem;\n}\nsection.billing-detail h2[data-v-1dc56bd8] {\n  color: #a98307;\n}\nsection.billing-detail h2 span[data-v-1dc56bd8] {\n  color: #020409;\n}\nsection.billing-detail hr[data-v-1dc56bd8] {\n  border-color: #a98307;\n  opacity: 0.5;\n  width: 128px;\n  margin: 24px 0;\n}\n@media only screen and (min-width: 768px) {\nsection.billing-detail hr[data-v-1dc56bd8] {\n    margin: 32px 0;\n}\n}\n@media only screen and (min-width: 992px) {\nsection.billing-detail hr[data-v-1dc56bd8] {\n    margin: 40px 0;\n}\n}", ""]);
+exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nh1[data-v-1dc56bd8],\nh2[data-v-1dc56bd8],\nh3[data-v-1dc56bd8],\nh4[data-v-1dc56bd8],\nh5[data-v-1dc56bd8],\nh6[data-v-1dc56bd8] {\n  font-family: \"Oswald\", sans-serif;\n  font-weight: 400;\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-1dc56bd8],\nh2[data-v-1dc56bd8],\nh3[data-v-1dc56bd8],\nh4[data-v-1dc56bd8],\nh5[data-v-1dc56bd8],\nh6[data-v-1dc56bd8] {\n    font-weight: 500;\n}\n}\nh1[data-v-1dc56bd8] {\n  font-size: 3.375rem;\n  line-height: 1.1;\n}\n@media only screen and (min-width: 768px) {\nh1[data-v-1dc56bd8] {\n    font-size: 3.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-1dc56bd8] {\n    font-size: 4rem;\n}\n}\nh2[data-v-1dc56bd8] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n}\n@media only screen and (min-width: 768px) {\nh2[data-v-1dc56bd8] {\n    font-size: 2.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh2[data-v-1dc56bd8] {\n    font-size: 2.75rem;\n}\n}\nh3[data-v-1dc56bd8] {\n  font-size: 1.875rem;\n  line-height: 1.25;\n}\n@media only screen and (min-width: 768px) {\nh3[data-v-1dc56bd8] {\n    font-size: 2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh3[data-v-1dc56bd8] {\n    font-size: 2.125rem;\n}\n}\nh4[data-v-1dc56bd8] {\n  font-size: 1.1rem;\n  line-height: 1.33;\n}\n@media only screen and (min-width: 768px) {\nh4[data-v-1dc56bd8] {\n    font-size: 1.2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh4[data-v-1dc56bd8] {\n    font-size: 1.3rem;\n}\n}\nh5[data-v-1dc56bd8] {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}\nh6[data-v-1dc56bd8] {\n  font-size: 1rem;\n  line-height: 1.5rem;\n}\nsection.billing-detail[data-v-1dc56bd8] {\n  padding-top: 9rem;\n}\nsection.billing-detail h2[data-v-1dc56bd8] {\n  color: #a98307;\n}\nsection.billing-detail h2 span[data-v-1dc56bd8] {\n  color: #020409;\n}\nsection.billing-detail hr[data-v-1dc56bd8] {\n  border-color: #a98307;\n  opacity: 0.5;\n  width: 128px;\n  margin: 24px 0;\n}\n@media only screen and (min-width: 768px) {\nsection.billing-detail hr[data-v-1dc56bd8] {\n    margin: 32px 0;\n}\n}\n@media only screen and (min-width: 992px) {\nsection.billing-detail hr[data-v-1dc56bd8] {\n    margin: 40px 0;\n}\n}\nsection.billing-detail p.order-message[data-v-1dc56bd8] {\n  width: 50%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 1rem;\n  font-size: 1rem;\n  line-height: 1.5rem;\n}", ""]);
 
 // exports
 
@@ -2710,7 +2746,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Osw
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n  font-family: \"Oswald\", sans-serif;\n  font-weight: 400;\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n    font-weight: 500;\n}\n}\nh1[data-v-49d9a814] {\n  font-size: 3.375rem;\n  line-height: 1.1;\n}\n@media only screen and (min-width: 768px) {\nh1[data-v-49d9a814] {\n    font-size: 3.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814] {\n    font-size: 4rem;\n}\n}\nh2[data-v-49d9a814] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n}\n@media only screen and (min-width: 768px) {\nh2[data-v-49d9a814] {\n    font-size: 2.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh2[data-v-49d9a814] {\n    font-size: 2.75rem;\n}\n}\nh3[data-v-49d9a814] {\n  font-size: 1.875rem;\n  line-height: 1.25;\n}\n@media only screen and (min-width: 768px) {\nh3[data-v-49d9a814] {\n    font-size: 2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh3[data-v-49d9a814] {\n    font-size: 2.125rem;\n}\n}\nh4[data-v-49d9a814] {\n  font-size: 1.1rem;\n  line-height: 1.33;\n}\n@media only screen and (min-width: 768px) {\nh4[data-v-49d9a814] {\n    font-size: 1.2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh4[data-v-49d9a814] {\n    font-size: 1.3rem;\n}\n}\nh5[data-v-49d9a814] {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}\nh6[data-v-49d9a814] {\n  font-size: 1rem;\n  line-height: 1.5rem;\n}\nsection.cart-table[data-v-49d9a814] {\n  font-family: \"Montserrat\", sans-serif;\n}\nsection.cart-table h2[data-v-49d9a814] {\n  color: #a98307;\n}\nsection.cart-table h2 span[data-v-49d9a814] {\n  color: #020409;\n}\nsection.cart-table h4[data-v-49d9a814] {\n  color: #020409;\n}\nsection.cart-table hr[data-v-49d9a814] {\n  border-color: #a98307;\n  opacity: 0.5;\n  width: 128px;\n  margin: 24px 0;\n}\nsection.cart-table hr.divider[data-v-49d9a814] {\n  margin: 0;\n  width: 50%;\n}\n@media only screen and (min-width: 768px) {\nsection.cart-table hr[data-v-49d9a814] {\n    margin: 32px 0;\n}\n}\n@media only screen and (min-width: 992px) {\nsection.cart-table hr[data-v-49d9a814] {\n    margin: 40px 0;\n}\n}\nsection.cart-table p.order-message[data-v-49d9a814] {\n  width: 50%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 1rem;\n  font-size: 1rem;\n  line-height: 1.5rem;\n}", ""]);
+exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n  font-family: \"Oswald\", sans-serif;\n  font-weight: 400;\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n    font-weight: 500;\n}\n}\nh1[data-v-49d9a814] {\n  font-size: 3.375rem;\n  line-height: 1.1;\n}\n@media only screen and (min-width: 768px) {\nh1[data-v-49d9a814] {\n    font-size: 3.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814] {\n    font-size: 4rem;\n}\n}\nh2[data-v-49d9a814] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n}\n@media only screen and (min-width: 768px) {\nh2[data-v-49d9a814] {\n    font-size: 2.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh2[data-v-49d9a814] {\n    font-size: 2.75rem;\n}\n}\nh3[data-v-49d9a814] {\n  font-size: 1.875rem;\n  line-height: 1.25;\n}\n@media only screen and (min-width: 768px) {\nh3[data-v-49d9a814] {\n    font-size: 2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh3[data-v-49d9a814] {\n    font-size: 2.125rem;\n}\n}\nh4[data-v-49d9a814] {\n  font-size: 1.1rem;\n  line-height: 1.33;\n}\n@media only screen and (min-width: 768px) {\nh4[data-v-49d9a814] {\n    font-size: 1.2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh4[data-v-49d9a814] {\n    font-size: 1.3rem;\n}\n}\nh5[data-v-49d9a814] {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}\nh6[data-v-49d9a814] {\n  font-size: 1rem;\n  line-height: 1.5rem;\n}\nsection.cart-table[data-v-49d9a814] {\n  font-family: \"Montserrat\", sans-serif;\n}\nsection.cart-table h2[data-v-49d9a814] {\n  color: #a98307;\n}\nsection.cart-table h2 span[data-v-49d9a814] {\n  color: #020409;\n}\nsection.cart-table h4[data-v-49d9a814] {\n  color: #020409;\n  text-align: right;\n}\nsection.cart-table hr[data-v-49d9a814] {\n  border-color: #a98307;\n  opacity: 0.5;\n  width: 128px;\n  margin: 24px 0;\n}\nsection.cart-table hr.divider[data-v-49d9a814] {\n  margin: 0;\n  width: 70%;\n  margin-right: 0;\n  margin-left: auto;\n}\n@media only screen and (min-width: 768px) {\nsection.cart-table hr[data-v-49d9a814] {\n    margin: 32px 0;\n}\n}\n@media only screen and (min-width: 992px) {\nsection.cart-table hr[data-v-49d9a814] {\n    margin: 40px 0;\n}\n}", ""]);
 
 // exports
 
@@ -4322,6 +4358,7 @@ var render = function() {
       _c(
         "v-form",
         {
+          on: { submit: _vm.onSubmit },
           model: {
             value: _vm.valid,
             callback: function($$v) {
@@ -4337,25 +4374,25 @@ var render = function() {
               _c(
                 "v-row",
                 [
-                  _c("v-col", [
-                    _c("h2", [
-                      _vm._v("Billing "),
-                      _c("span", [_vm._v("details")])
-                    ]),
-                    _vm._v(" "),
-                    _c("hr")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-row",
-                [
                   _c(
                     "v-col",
                     { attrs: { cols: "12", md: "6" } },
                     [
+                      _c(
+                        "v-row",
+                        [
+                          _c("v-col", [
+                            _c("h2", [
+                              _vm._v("Billing "),
+                              _c("span", [_vm._v("details")])
+                            ]),
+                            _vm._v(" "),
+                            _c("hr")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
                       _c(
                         "v-row",
                         [
@@ -4520,15 +4557,8 @@ var render = function() {
                           )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-col",
-                    { attrs: { cols: "12", md: "6" } },
-                    [
+                      ),
+                      _vm._v(" "),
                       _c(
                         "v-row",
                         [
@@ -4603,7 +4633,49 @@ var render = function() {
                       )
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12", md: "6" } },
+                    [_c("CartTable")],
+                    1
                   )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-row",
+                [
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12" } },
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { type: "submit", block: "", dark: "" } },
+                        [_vm._v("Place Order")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-row",
+                [
+                  _c("v-col", { attrs: { cols: "12" } }, [
+                    _c("div", { staticClass: "text-center" }, [
+                      _c("p", { staticClass: "order-message text-center" }, [
+                        _vm._v(
+                          "\n                        Any personal information we request will be used only to process your order or provide support. Under no circumstances will we sell or otherwise give away your information.\n                    "
+                        )
+                      ])
+                    ])
+                  ])
                 ],
                 1
               )
@@ -4765,39 +4837,6 @@ var render = function() {
               ]),
               _c("v-col", { attrs: { cols: "6", md: "6" } }, [
                 _c("h4", [_vm._v("$838")])
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-row",
-            [
-              _c(
-                "v-col",
-                { attrs: { cols: "12" } },
-                [
-                  _c("v-btn", { attrs: { block: "", dark: "" } }, [
-                    _vm._v("Place Order")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-row",
-            [
-              _c("v-col", { attrs: { cols: "12" } }, [
-                _c("div", { staticClass: "text-center" }, [
-                  _c("p", { staticClass: "order-message text-center" }, [
-                    _vm._v(
-                      "\n                    Any personal information we request will be used only to process your order or provide support. Under no circumstances will we sell or otherwise give away your information.\n                "
-                    )
-                  ])
-                ])
               ])
             ],
             1
@@ -5264,13 +5303,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    [
-      _c("Header", { staticClass: "dark" }),
-      _vm._v(" "),
-      _c("BillingDetail"),
-      _vm._v(" "),
-      _c("CartTable")
-    ],
+    [_c("Header", { staticClass: "dark" }), _vm._v(" "), _c("BillingDetail")],
     1
   )
 }
@@ -63650,7 +63683,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************!*\
   !*** ./resources/js/store/helper.js ***!
   \**************************************/
-/*! exports provided: productsComputed, productsMethods, cartComputed, cartMethods */
+/*! exports provided: productsComputed, productsMethods, cartComputed, cartMethods, billingComputed, billingMethods */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63659,6 +63692,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "productsMethods", function() { return productsMethods; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cartComputed", function() { return cartComputed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cartMethods", function() { return cartMethods; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "billingComputed", function() { return billingComputed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "billingMethods", function() { return billingMethods; });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -63675,6 +63710,10 @@ var productsMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['
 
 var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
 var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard']);
+/* Billing */
+
+var billingComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getBillingData']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['billing']));
+var billingMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addBillingData']);
 
 /***/ }),
 
@@ -63693,6 +63732,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_productos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/productos */ "./resources/js/store/modules/productos.js");
 /* harmony import */ var _modules_cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/cart */ "./resources/js/store/modules/cart.js");
+/* harmony import */ var _modules_billing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/billing */ "./resources/js/store/modules/billing.js");
+
 
 
 
@@ -63701,8 +63742,53 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     productos: _modules_productos__WEBPACK_IMPORTED_MODULE_2__["default"],
-    cart: _modules_cart__WEBPACK_IMPORTED_MODULE_3__["default"]
+    cart: _modules_cart__WEBPACK_IMPORTED_MODULE_3__["default"],
+    billing: _modules_billing__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/billing.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/billing.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var baseURL = 'http://webforceshop.test/api/';
+var state = {
+  billing: {}
+};
+var mutations = {
+  SET_BILLING: function SET_BILLING(state, form) {
+    state.billing = form;
+  },
+  CLEAN_BILLING: function CLEAN_BILLING() {
+    state.billing = {};
+  }
+};
+var getters = {
+  getBillingData: function getBillingData(state) {
+    return state.billing;
+  }
+};
+var actions = {
+  addBillingData: function addBillingData(_ref, form) {
+    var commit = _ref.commit;
+    commit("SET_BILLING", form);
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  mutations: mutations,
+  getters: getters,
+  actions: actions
 });
 
 /***/ }),

@@ -59,20 +59,6 @@
                     <h4>$838</h4>
                 </v-col>
             </v-row>
-            <v-row>
-                <v-col cols="12">
-                    <v-btn block dark>Place Order</v-btn>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col cols="12">
-                    <div class="text-center">
-                        <p class="order-message text-center">
-                        Any personal information we request will be used only to process your order or provide support. Under no circumstances will we sell or otherwise give away your information.
-                    </p>
-                    </div>
-                </v-col>
-            </v-row>
         </v-container>
     </section>
 </template>
@@ -145,6 +131,7 @@ export default {
 
         h4 {
             color: map-get($theme-colors, dark);
+            text-align: right;
         }
 
         hr {
@@ -155,7 +142,9 @@ export default {
 
             &.divider {
                 margin: 0;
-                width: 50%;
+                width: 70%;
+                margin-right: 0;
+                margin-left: auto;
             }
 
             @media #{map-get($display-breakpoints, 'md-and-up')} {
@@ -165,15 +154,6 @@ export default {
             @media #{map-get($display-breakpoints, 'lg-and-up')} {
                 margin: 40px 0;
             }
-        }
-
-        p.order-message {
-            width: 50%;
-            margin: 0 auto;
-            text-align:center;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            line-height: 1.5rem;
         }
     }
 </style>

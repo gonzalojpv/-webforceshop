@@ -56,7 +56,7 @@ export default {
                 product_id: this.getProduct.id,
                 quantity: this.quantity,
             }).then((response) => {
-                swal('Good job!', 'You added new product in your shopping cart!', 'success');
+                swal('In your cart shopping!', 'You added new product in your shopping cart!', 'success');
                  this.text_button = 'Update cart';
             });
         }

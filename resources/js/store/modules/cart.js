@@ -36,10 +36,10 @@ const actions = {
         });
     },
     removeItemCart({ commit }, id) {
-        return axios.delete(`${baseURL}cart/{id}`).then(response => {
+        return axios.delete(`${baseURL}cart/${id}`).then(response => {
             console.log(response);
 
-            commit("UPDATE_CART", response.data.data.items);
+            commit("UPDATE_CART", response.data.data);
 
             return response.data;
         }).catch(error => {

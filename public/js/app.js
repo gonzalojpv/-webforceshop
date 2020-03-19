@@ -1969,7 +1969,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         product_id: this.getProduct.id,
         quantity: this.quantity
       }).then(function (response) {
-        sweetalert__WEBPACK_IMPORTED_MODULE_1___default()('Good job!', 'You added new product in your shopping cart!', 'success');
+        sweetalert__WEBPACK_IMPORTED_MODULE_1___default()('In your cart shopping!', 'You added new product in your shopping cart!', 'success');
         _this.text_button = 'Update cart';
       });
     }
@@ -2270,6 +2270,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2277,26 +2279,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       desserts: [{
         name: 'Frozen Yogurt',
-        calories: 159
+        price: 159,
+        quantity: 1,
+        id: 1
       }, {
         name: 'Ice cream sandwich',
-        calories: 237
+        price: 237,
+        quantity: 1,
+        id: 2
       }, {
         name: 'Eclair',
-        calories: 262
+        price: 262,
+        quantity: 1,
+        id: 3
       }, {
         name: 'Cupcake',
-        calories: 305
-      }, {
-        name: 'Gingerbread',
-        calories: 356
+        price: 305,
+        quantity: 1,
+        id: 4
       }]
     };
   },
   methods: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["cartMethods"], {
-    handleAction: function handleAction(evt) {
-      evt.preventDefault();
-      console.log('remove item cart');
+    handleAction: function handleAction(id) {
+      var _this = this;
+
+      sweetalert__WEBPACK_IMPORTED_MODULE_1___default()({
+        title: "Are you sure?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(function (willDelete) {
+        if (willDelete) {
+          _this.removeItemCart(id).then(function (response) {
+            sweetalert__WEBPACK_IMPORTED_MODULE_1___default()("Poof! Product removed from cart shopping.", {
+              icon: "success"
+            });
+          });
+        }
+      });
     }
   }),
   computed: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["billingComputed"], {}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["cartComputed"])
@@ -4772,6 +4793,10 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("th", { staticClass: "text-left" }, [
+                                  _vm._v("Quantity")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "text-left" }, [
                                   _vm._v("Total")
                                 ])
                               ])
@@ -4783,7 +4808,9 @@ var render = function() {
                                 return _c("tr", { key: item.name }, [
                                   _c("td", [_vm._v(_vm._s(item.name))]),
                                   _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(item.calories))]),
+                                  _c("td", [_vm._v(_vm._s(item.auantity))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(item.price))]),
                                   _vm._v(" "),
                                   _c(
                                     "td",
@@ -4798,7 +4825,11 @@ var render = function() {
                                             "x-small": "",
                                             color: "#020409"
                                           },
-                                          on: { click: _vm.handleAction }
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.handleAction(item.id)
+                                            }
+                                          }
                                         },
                                         [
                                           _vm._v(
@@ -63899,9 +63930,9 @@ var actions = {
   },
   removeItemCart: function removeItemCart(_ref2, id) {
     var commit = _ref2.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(baseURL, "cart/{id}")).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(baseURL, "cart/").concat(id)).then(function (response) {
       console.log(response);
-      commit("UPDATE_CART", response.data.data.items);
+      commit("UPDATE_CART", response.data.data);
       return response.data;
     })["catch"](function (error) {
       return Promise.reject(error);

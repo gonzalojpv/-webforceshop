@@ -15,19 +15,21 @@
                                 <tr>
                                     <th class="text-left">Product name</th>
                                     <th class="text-left">Price</th>
+                                    <th class="text-left">Quantity</th>
                                     <th class="text-left">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="item in desserts" :key="item.name">
                                     <td>{{ item.name }}</td>
-                                    <td>{{ item.calories }}</td>
+                                    <td>{{ item.auantity }}</td>
+                                    <td>{{ item.price }}</td>
                                     <td class="text-center">
                                         <v-btn
                                             fab
                                             outlined
                                             x-small
-                                            v-on:click="handleAction"
+                                            v-on:click="handleAction(item.id)"
                                             color="#020409">
                                             X
                                         </v-btn>
@@ -85,34 +87,50 @@ export default {
     data() {
         return {
             desserts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-          },
-        ],
+                {
+                    name: 'Frozen Yogurt',
+                    price: 159,
+                    quantity: 1,
+                    id: 1,
+                },
+                {
+                    name: 'Ice cream sandwich',
+                    price: 237,
+                    quantity: 1,
+                    id: 2,
+                },
+                {
+                    name: 'Eclair',
+                    price: 262,
+                    quantity: 1,
+                    id: 3,
+                },
+                {
+                    name: 'Cupcake',
+                    price: 305,
+                    quantity: 1,
+                    id: 4,
+                },
+            ],
         };
     },
     methods: {
         ...cartMethods,
-        handleAction(evt) {
-            evt.preventDefault();
-            console.log('remove item cart');
+        handleAction(id) {
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    this.removeItemCart(id).then( (response) => {
+                        swal("Poof! Product removed from cart shopping.", {
+                            icon: "success",
+                        });
+                    });
+                }
+            });
         }
     },
     computed: {

@@ -11,84 +11,83 @@
 
                 <v-row>
                     <v-col cols="12" md="6">
-                              <v-row>
-                                <v-col cols="12" md="6">
-                                  <v-text-field
-                                    v-model="firstname"
-                                    :rules="nameRules"
-                                    :counter="10"
-                                    label="First name"
-                                    required></v-text-field>
-                                </v-col>
+                        <v-row>
+                            <v-col cols="12" md="6">
+                              <v-text-field
+                                v-model="firstname"
+                                :rules="nameRules"
+                                :counter="10"
+                                label="First name"
+                                required></v-text-field>
+                            </v-col>
 
-                                <v-col cols="12" md="6">
-                                  <v-text-field
-                                    v-model="lastname"
-                                    :rules="nameRules"
-                                    :counter="10"
-                                    label="Last name"
-                                    required></v-text-field>
-                                </v-col>
-                              </v-row>
+                            <v-col cols="12" md="6">
+                              <v-text-field
+                                v-model="lastname"
+                                :rules="nameRules"
+                                :counter="10"
+                                label="Last name"
+                                required></v-text-field>
+                            </v-col>
+                        </v-row>
 
-                              <v-row>
-                                <v-col cols="12" md="6">
-                                  <v-text-field
-                                    v-model="address"
-                                    label="Street address"
+                        <v-row>
+                            <v-col cols="12" md="6">
+                              <v-text-field
+                                v-model="address"
+                                label="Street address"
+                                required></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="6">
+                                <v-text-field
+                                    v-model="zipcode"
+                                    label="Postcode / ZIP"
                                     required></v-text-field>
-                                </v-col>
-                                  <v-col cols="12" md="6">
-                                      <v-text-field
-                                        v-model="zipcode"
-                                        label="Postcode / ZIP"
-                                        required></v-text-field>
-                                    </v-col>
-                              </v-row>
+                            </v-col>
+                        </v-row>
 
-                              <v-row>
-                                <v-col cols="12" md="6">
-                                  <v-text-field
-                                    v-model="city"
-                                    label="Town / City"
+                        <v-row>
+                            <v-col cols="12" md="6">
+                              <v-text-field
+                                v-model="city"
+                                label="Town / City"
+                                required></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="6">
+                                <v-text-field
+                                    v-model="state"
+                                    label="State"
                                     required></v-text-field>
-                                </v-col>
-                                  <v-col cols="12" md="6">
-                                      <v-text-field
-                                        v-model="state"
-                                        :counter="10"
-                                        label="State"
-                                        required></v-text-field>
-                                    </v-col>
-                              </v-row>
+                            </v-col>
+                          </v-row>
 
-                              <v-row>
-                                <v-col cols="12" md="12">
-                                  <v-text-field
+                        <v-row>
+                            <v-col cols="12" md="12">
+                                <v-text-field
                                     v-model="country"
                                     label="Country"
                                     required></v-text-field>
-                                </v-col>
-                              </v-row>
+                            </v-col>
+                        </v-row>
 
-                              <v-row>
-                                <v-col cols="12" md="6">
-                                  <v-text-field
+                    </v-col>
+                    <v-col cols="12" md="6">
+
+                        <v-row>
+                            <v-col cols="12" md="6">
+                                <v-text-field
                                     v-model="email"
                                     :rules="emailRules"
                                     label="E-mail"
                                     required></v-text-field>
-                                </v-col>
-                                  <v-col cols="12" md="6">
-                                      <v-text-field
-                                            v-model="phone"
-                                            label="Phone"
-                                            required></v-text-field>
-                                    </v-col>
-                              </v-row>
-
-                    </v-col>
-                    <v-col cols="12" md="6">
+                            </v-col>
+                            <v-col cols="12" md="6">
+                                    <v-text-field
+                                        v-model="phone"
+                                        label="Phone"
+                                        required></v-text-field>
+                            </v-col>
+                        </v-row>
                         <v-row>
                             <v-col cols="12">
                                 <v-textarea
@@ -107,25 +106,25 @@
 <script>
     export default {
         data: () => ({
-          valid: false,
-          firstname: '',
-          lastname: '',
-          country: '',
-          address: '',
-          city: '',
-          state: '',
-          zipcode: '',
-          phone: '',
-          notes: '',
-          nameRules: [
-            v => !!v || 'Name is required',
-            v => v.length <= 10 || 'Name must be less than 10 characters',
-          ],
-          email: '',
-          emailRules: [
-            v => !!v || 'E-mail is required',
-            v => /.+@.+/.test(v) || 'E-mail must be valid',
-          ],
+            valid: false,
+            firstname: '',
+            lastname: '',
+            country: '',
+            address: '',
+            city: '',
+            state: '',
+            zipcode: '',
+            phone: '',
+            notes: '',
+            nameRules: [
+                v => !!v || 'Name is required',
+                v => v.length <= 10 || 'Name must be less than 10 characters',
+            ],
+            email: '',
+            emailRules: [
+                v => !!v || 'E-mail is required',
+                v => /.+@.+/.test(v) || 'E-mail must be valid',
+            ],
         }),
     }
 </script>

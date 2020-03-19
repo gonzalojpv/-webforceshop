@@ -17,8 +17,8 @@ const mutations = {
 }
 
 const getters = {
-    getCart(state) {
-        return { cart: state.cart, items: state.cart_items};
+    getItemsCart(state) {
+        return state.cart_items;
     }
 }
 
@@ -41,6 +41,15 @@ const actions = {
 
             commit("UPDATE_CART", response.data.data);
 
+            return response.data;
+        }).catch(error => {
+            return Promise.reject(error);
+        });
+    },
+    fetchCart({ commit }) {
+        return axios.get(`${baseURL}cart/`).then(response => {
+            commit("UPDATE_CART", response.data.data);
+            console.log(response.data);
             return response.data;
         }).catch(error => {
             return Promise.reject(error);

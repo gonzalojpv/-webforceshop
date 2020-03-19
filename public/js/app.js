@@ -2272,33 +2272,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      desserts: [{
-        name: 'Frozen Yogurt',
-        price: 159,
-        quantity: 1,
-        id: 1
-      }, {
-        name: 'Ice cream sandwich',
-        price: 237,
-        quantity: 1,
-        id: 2
-      }, {
-        name: 'Eclair',
-        price: 262,
-        quantity: 1,
-        id: 3
-      }, {
-        name: 'Cupcake',
-        price: 305,
-        quantity: 1,
-        id: 4
-      }]
-    };
+    return {};
+  },
+  mounted: function mounted() {
+    this.fetchCart().then();
   },
   methods: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["cartMethods"], {
     handleAction: function handleAction(id) {
@@ -2785,7 +2774,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Osw
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n  font-family: \"Oswald\", sans-serif;\n  font-weight: 400;\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n    font-weight: 500;\n}\n}\nh1[data-v-49d9a814] {\n  font-size: 3.375rem;\n  line-height: 1.1;\n}\n@media only screen and (min-width: 768px) {\nh1[data-v-49d9a814] {\n    font-size: 3.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814] {\n    font-size: 4rem;\n}\n}\nh2[data-v-49d9a814] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n}\n@media only screen and (min-width: 768px) {\nh2[data-v-49d9a814] {\n    font-size: 2.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh2[data-v-49d9a814] {\n    font-size: 2.75rem;\n}\n}\nh3[data-v-49d9a814] {\n  font-size: 1.875rem;\n  line-height: 1.25;\n}\n@media only screen and (min-width: 768px) {\nh3[data-v-49d9a814] {\n    font-size: 2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh3[data-v-49d9a814] {\n    font-size: 2.125rem;\n}\n}\nh4[data-v-49d9a814] {\n  font-size: 1.1rem;\n  line-height: 1.33;\n}\n@media only screen and (min-width: 768px) {\nh4[data-v-49d9a814] {\n    font-size: 1.2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh4[data-v-49d9a814] {\n    font-size: 1.3rem;\n}\n}\nh5[data-v-49d9a814] {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}\nh6[data-v-49d9a814] {\n  font-size: 1rem;\n  line-height: 1.5rem;\n}\nsection.cart-table[data-v-49d9a814] {\n  font-family: \"Montserrat\", sans-serif;\n}\nsection.cart-table h2[data-v-49d9a814] {\n  color: #a98307;\n}\nsection.cart-table h2 span[data-v-49d9a814] {\n  color: #020409;\n}\nsection.cart-table h4[data-v-49d9a814] {\n  color: #020409;\n  text-align: right;\n}\nsection.cart-table hr[data-v-49d9a814] {\n  border-color: #a98307;\n  opacity: 0.5;\n  width: 128px;\n  margin: 24px 0;\n}\nsection.cart-table hr.divider[data-v-49d9a814] {\n  margin: 0;\n  width: 70%;\n  margin-right: 0;\n  margin-left: auto;\n}\n@media only screen and (min-width: 768px) {\nsection.cart-table hr[data-v-49d9a814] {\n    margin: 32px 0;\n}\n}\n@media only screen and (min-width: 992px) {\nsection.cart-table hr[data-v-49d9a814] {\n    margin: 40px 0;\n}\n}", ""]);
+exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n  font-family: \"Oswald\", sans-serif;\n  font-weight: 400;\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814],\nh2[data-v-49d9a814],\nh3[data-v-49d9a814],\nh4[data-v-49d9a814],\nh5[data-v-49d9a814],\nh6[data-v-49d9a814] {\n    font-weight: 500;\n}\n}\nh1[data-v-49d9a814] {\n  font-size: 3.375rem;\n  line-height: 1.1;\n}\n@media only screen and (min-width: 768px) {\nh1[data-v-49d9a814] {\n    font-size: 3.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-49d9a814] {\n    font-size: 4rem;\n}\n}\nh2[data-v-49d9a814] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n}\n@media only screen and (min-width: 768px) {\nh2[data-v-49d9a814] {\n    font-size: 2.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh2[data-v-49d9a814] {\n    font-size: 2.75rem;\n}\n}\nh3[data-v-49d9a814] {\n  font-size: 1.875rem;\n  line-height: 1.25;\n}\n@media only screen and (min-width: 768px) {\nh3[data-v-49d9a814] {\n    font-size: 2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh3[data-v-49d9a814] {\n    font-size: 2.125rem;\n}\n}\nh4[data-v-49d9a814] {\n  font-size: 1.1rem;\n  line-height: 1.33;\n}\n@media only screen and (min-width: 768px) {\nh4[data-v-49d9a814] {\n    font-size: 1.2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh4[data-v-49d9a814] {\n    font-size: 1.3rem;\n}\n}\nh5[data-v-49d9a814] {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}\nh6[data-v-49d9a814] {\n  font-size: 1rem;\n  line-height: 1.5rem;\n}\nsection.cart-table[data-v-49d9a814] {\n  font-family: \"Montserrat\", sans-serif;\n}\nsection.cart-table h2[data-v-49d9a814] {\n  color: #a98307;\n  text-align: right;\n}\nsection.cart-table h2 span[data-v-49d9a814] {\n  color: #020409;\n}\nsection.cart-table h4[data-v-49d9a814] {\n  color: #020409;\n  text-align: right;\n}\nsection.cart-table hr[data-v-49d9a814] {\n  border-color: #a98307;\n  opacity: 0.5;\n  width: 128px;\n  margin: 24px 0;\n  margin-right: 0;\n  margin-left: auto;\n}\nsection.cart-table hr.divider[data-v-49d9a814] {\n  margin: 0;\n  width: 70%;\n  margin-right: 0;\n  margin-left: auto;\n}", ""]);
 
 // exports
 
@@ -4772,149 +4761,211 @@ var render = function() {
           _c(
             "v-row",
             [
-              _c(
-                "v-col",
-                { attrs: { cols: "12" } },
-                [
-                  _c("v-simple-table", {
-                    scopedSlots: _vm._u([
-                      {
-                        key: "default",
-                        fn: function() {
-                          return [
-                            _c("thead", [
-                              _c("tr", [
-                                _c("th", { staticClass: "text-left" }, [
-                                  _vm._v("Product name")
-                                ]),
-                                _vm._v(" "),
-                                _c("th", { staticClass: "text-left" }, [
-                                  _vm._v("Price")
-                                ]),
-                                _vm._v(" "),
-                                _c("th", { staticClass: "text-left" }, [
-                                  _vm._v("Quantity")
-                                ]),
-                                _vm._v(" "),
-                                _c("th", { staticClass: "text-left" }, [
-                                  _vm._v("Total")
-                                ])
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "tbody",
-                              _vm._l(_vm.desserts, function(item) {
-                                return _c("tr", { key: item.name }, [
-                                  _c("td", [_vm._v(_vm._s(item.name))]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(item.auantity))]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(item.price))]),
+              _vm.getItemsCart.length
+                ? _c(
+                    "v-col",
+                    { attrs: { cols: "12" } },
+                    [
+                      _c("v-simple-table", {
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "default",
+                              fn: function() {
+                                return [
+                                  _c("thead", [
+                                    _c("tr", [
+                                      _c("th", { staticClass: "text-left" }, [
+                                        _vm._v("Product name")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", { staticClass: "text-left" }, [
+                                        _vm._v("Price")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", { staticClass: "text-left" }, [
+                                        _vm._v("Quantity")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", { staticClass: "text-left" }, [
+                                        _vm._v("Total")
+                                      ])
+                                    ])
+                                  ]),
                                   _vm._v(" "),
                                   _c(
-                                    "td",
-                                    { staticClass: "text-center" },
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: {
-                                            fab: "",
-                                            outlined: "",
-                                            "x-small": "",
-                                            color: "#020409"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.handleAction(item.id)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        X\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
+                                    "tbody",
+                                    _vm._l(_vm.getItemsCart, function(item) {
+                                      return _c("tr", { key: item.name }, [
+                                        _c("td", [
+                                          _vm._v(_vm._s(item.product.name))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(item.quantity))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(item.product.price))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "td",
+                                          { staticClass: "text-center" },
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                attrs: {
+                                                  fab: "",
+                                                  outlined: "",
+                                                  "x-small": "",
+                                                  color: "#020409"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.handleAction(
+                                                      item.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                        X\n                                    "
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ])
+                                    }),
+                                    0
                                   )
-                                ])
-                              }),
-                              0
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          false,
+                          3991576364
+                        )
+                      })
+                    ],
+                    1
+                  )
+                : _c(
+                    "v-col",
+                    { attrs: { cols: "12" } },
+                    [
+                      _c(
+                        "v-alert",
+                        { attrs: { outlined: "", color: "purple" } },
+                        [
+                          _c("div", { staticClass: "title" }, [
+                            _vm._v("Oops!")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _vm._v(
+                              "You don't add nothing in your shopping cart."
                             )
-                          ]
-                        },
-                        proxy: true
-                      }
-                    ])
-                  })
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                link: "",
+                                href: "/",
+                                depressed: "",
+                                large: ""
+                              }
+                            },
+                            [_vm._v("Shop now!")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.getItemsCart.length
+            ? _c(
+                "v-row",
+                [
+                  _c("v-col", { attrs: { cols: "6", md: "6" } }, [
+                    _c("h4", [_vm._v("Subtotal")])
+                  ]),
+                  _c("v-col", { attrs: { cols: "6", md: "6" } }, [
+                    _c("h4", [_vm._v("$838")])
+                  ])
                 ],
                 1
               )
-            ],
-            1
-          ),
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "v-row",
-            [
-              _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                _c("h4", [_vm._v("Subtotal")])
-              ]),
-              _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                _c("h4", [_vm._v("$838")])
-              ])
-            ],
-            1
-          ),
+          _vm.getItemsCart.length
+            ? _c(
+                "v-row",
+                [
+                  _c("v-col", { attrs: { cols: "12" } }, [
+                    _c("hr", { staticClass: "divider" })
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "v-row",
-            [
-              _c("v-col", { attrs: { cols: "12" } }, [
-                _c("hr", { staticClass: "divider" })
-              ])
-            ],
-            1
-          ),
+          _vm.getItemsCart.length
+            ? _c(
+                "v-row",
+                [
+                  _c("v-col", { attrs: { cols: "6", md: "6" } }, [
+                    _c("h4", [_vm._v("Shipping")])
+                  ]),
+                  _c("v-col", { attrs: { cols: "6", md: "6" } }, [
+                    _c("h4", [_vm._v("$838")])
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "v-row",
-            [
-              _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                _c("h4", [_vm._v("Shipping")])
-              ]),
-              _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                _c("h4", [_vm._v("$838")])
-              ])
-            ],
-            1
-          ),
+          _vm.getItemsCart.length
+            ? _c(
+                "v-row",
+                [
+                  _c("v-col", { attrs: { cols: "12" } }, [
+                    _c("hr", { staticClass: "divider" })
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "v-row",
-            [
-              _c("v-col", { attrs: { cols: "12" } }, [
-                _c("hr", { staticClass: "divider" })
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-row",
-            [
-              _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                _c("h4", [_vm._v("Total")])
-              ]),
-              _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                _c("h4", [_vm._v("$838")])
-              ])
-            ],
-            1
-          )
+          _vm.getItemsCart.length
+            ? _c(
+                "v-row",
+                [
+                  _c("v-col", { attrs: { cols: "6", md: "6" } }, [
+                    _c("h4", [_vm._v("Total")])
+                  ]),
+                  _c("v-col", { attrs: { cols: "6", md: "6" } }, [
+                    _c("h4", [_vm._v("$838")])
+                  ])
+                ],
+                1
+              )
+            : _vm._e()
         ],
         1
       )
@@ -63800,8 +63851,8 @@ var productsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0_
 var productsMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchProducts', 'fetchProduct']);
 /* Cart */
 
-var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
-var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard', 'removeItemCart']);
+var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getItemsCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
+var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard', 'removeItemCart', 'fetchCart']);
 /* Billing */
 
 var billingComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getBillingData']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['billing']));
@@ -63911,11 +63962,8 @@ var mutations = {
   }
 };
 var getters = {
-  getCart: function getCart(state) {
-    return {
-      cart: state.cart,
-      items: state.cart_items
-    };
+  getItemsCart: function getItemsCart(state) {
+    return state.cart_items;
   }
 };
 var actions = {
@@ -63933,6 +63981,16 @@ var actions = {
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(baseURL, "cart/").concat(id)).then(function (response) {
       console.log(response);
       commit("UPDATE_CART", response.data.data);
+      return response.data;
+    })["catch"](function (error) {
+      return Promise.reject(error);
+    });
+  },
+  fetchCart: function fetchCart(_ref3) {
+    var commit = _ref3.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(baseURL, "cart/")).then(function (response) {
+      commit("UPDATE_CART", response.data.data);
+      console.log(response.data);
       return response.data;
     })["catch"](function (error) {
       return Promise.reject(error);

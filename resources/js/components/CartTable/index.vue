@@ -8,7 +8,7 @@
                 </v-col>
             </v-row>
             <v-row>
-                <v-col cols="12">
+                <v-col cols="12" v-if="getItemsCart.length">
                     <v-simple-table>
                         <template v-slot:default>
                             <thead>
@@ -20,10 +20,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="item in desserts" :key="item.name">
-                                    <td>{{ item.name }}</td>
-                                    <td>{{ item.auantity }}</td>
-                                    <td>{{ item.price }}</td>
+                                <tr v-for="item in getItemsCart" :key="item.name">
+                                    <td>{{ item.product.name }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>{{ item.product.price }}</td>
                                     <td class="text-center">
                                         <v-btn
                                             fab
@@ -39,32 +39,40 @@
                         </template>
                     </v-simple-table>
                 </v-col>
+                <v-col cols="12" v-else>
+                    <v-alert outlined color="purple">
+                        <div class="title">Oops!</div>
+                        <div>You don't add nothing in your shopping cart.</div>
+                        <br />
+                        <v-btn link href="/" depressed large>Shop now!</v-btn>
+                    </v-alert>
+                </v-col>
             </v-row>
-            <v-row>
+            <v-row v-if="getItemsCart.length">
                 <v-col cols="6" md="6">
                     <h4>Subtotal</h4>
                 </v-col><v-col cols="6" md="6">
                     <h4>$838</h4>
                 </v-col>
             </v-row>
-            <v-row>
+            <v-row v-if="getItemsCart.length">
                 <v-col cols="12">
                     <hr class="divider">
                 </v-col>
             </v-row>
-            <v-row>
+            <v-row v-if="getItemsCart.length">
                 <v-col cols="6" md="6">
                     <h4>Shipping</h4>
                 </v-col><v-col cols="6" md="6">
                     <h4>$838</h4>
                 </v-col>
             </v-row>
-            <v-row>
+            <v-row v-if="getItemsCart.length">
                 <v-col cols="12">
                     <hr class="divider">
                 </v-col>
             </v-row>
-            <v-row>
+            <v-row v-if="getItemsCart.length">
                 <v-col cols="6" md="6">
                     <h4>Total</h4>
                 </v-col><v-col cols="6" md="6">
@@ -86,33 +94,10 @@ import swal from 'sweetalert';
 export default {
     data() {
         return {
-            desserts: [
-                {
-                    name: 'Frozen Yogurt',
-                    price: 159,
-                    quantity: 1,
-                    id: 1,
-                },
-                {
-                    name: 'Ice cream sandwich',
-                    price: 237,
-                    quantity: 1,
-                    id: 2,
-                },
-                {
-                    name: 'Eclair',
-                    price: 262,
-                    quantity: 1,
-                    id: 3,
-                },
-                {
-                    name: 'Cupcake',
-                    price: 305,
-                    quantity: 1,
-                    id: 4,
-                },
-            ],
         };
+    },
+    mounted() {
+        this.fetchCart().then();
     },
     methods: {
         ...cartMethods,
@@ -149,6 +134,7 @@ export default {
 
         h2 {
             color: map-get($theme-colors, primary);
+            text-align: right;
 
             span {
                 color: map-get($theme-colors, dark);
@@ -165,20 +151,14 @@ export default {
             opacity: 0.5;
             width: 128px;
             margin: 24px 0;
+            margin-right: 0;
+                margin-left: auto;
 
             &.divider {
                 margin: 0;
                 width: 70%;
                 margin-right: 0;
                 margin-left: auto;
-            }
-
-            @media #{map-get($display-breakpoints, 'md-and-up')} {
-                margin: 32px 0;
-            }
-
-            @media #{map-get($display-breakpoints, 'lg-and-up')} {
-                margin: 40px 0;
             }
         }
     }

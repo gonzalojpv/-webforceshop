@@ -8,7 +8,9 @@ const state = {
         shipping: 20,
         total: 0,
     },
+    _cart: getCart('auth._cart'),
     cart_items: [],
+    id: getCart('cart.id'),
 };
 
 const mutations = {
@@ -21,6 +23,14 @@ const mutations = {
     UPDATE_INFO_CART(state, data) {
         state.cart.subtotal = data.subtotal;
         state.cart.total = data.total;
+    },
+    SET_KEY_CART(state, _cart) {
+        saveState('auth._cart', _cart);
+        state._cart = _cart;
+    },
+    SET_ID_CART(state, _id) {
+        saveState('cart.id', _id);
+        state.id = _id;
     }
 }
 
@@ -36,6 +46,9 @@ const getters = {
         let total = state.cart_items.forEach(element => sum + element.product.price);
 
         return total;
+    },
+    getKeyCart(state) {
+        return { id: state.id, _cart: state._cart };
     }
 }
 
@@ -46,11 +59,15 @@ const actions = {
         let total = subtotal + state.shipping;
         commit("UPDATE_INFO_CART", { total, subtotal });
     },
-    addToCard({ commit }, value) {
+    addToCard({ state, commit }, value) {
+
+        value._cart = state._cart;
+
         return axios.post(`${baseURL}cart/`, value)
             .then(response => {
-
-                //commit("FETCH_PRODUCTS", response.data.data);
+                commit("ADD_TO_CART", response.data.data);
+                commit("SET_KEY_CART", response.data.data.session_id);
+                commit("SET_ID_CART", response.data.data.cart_id);
 
                 return response.data;
             }).catch(error => {
@@ -59,7 +76,6 @@ const actions = {
     },
     removeItemCart({ commit }, id) {
         return axios.delete(`${baseURL}cart/${id}`).then(response => {
-            console.log(response);
 
             commit("UPDATE_CART", response.data.data);
 
@@ -68,13 +84,13 @@ const actions = {
             return Promise.reject(error);
         });
     },
-    fetchCart({ state, commit }) {
-        return axios.get(`${baseURL}cart/`).then(response => {
+    fetchCart({ state, commit }, id) {
+        return axios.get(`${baseURL}cart/${id}`).then(response => {
 
-            commit("UPDATE_CART", response.data.data);
+            commit("UPDATE_CART", response.data.data.items);
 
             let subtotal = 0;
-            response.data.data.forEach(element => {
+            response.data.data.items.forEach(element => {
                 subtotal = subtotal + element.product.price;
             });
             let total = subtotal + state.cart.shipping;
@@ -88,6 +104,13 @@ const actions = {
     }
 };
 
+function getCart(key) {
+    return window.localStorage.getItem(key);
+}
+
+function saveState(key, state) {
+    window.localStorage.setItem(key, JSON.stringify(state))
+}
 
 export default {
     state,

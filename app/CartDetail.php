@@ -9,4 +9,8 @@ class CartDetail extends Model
     public function product() {
         return $this->belongsTo(Product::class);
     }
+
+    public function cart() {
+        return $this->belongsTo(Cart::class);
+    }
 }

@@ -25,7 +25,7 @@ Route::resource('products', 'Api\ProductController')->only([
     'index', 'show', 'destroy'
 ]);
 Route::resource('cart', 'Api\CartDetailConroller')->only([
-    'index', 'store', 'update', 'destroy'
+    'index', 'show', 'store', 'update', 'destroy'
 ]);
 
 Route::middleware('auth:api')->group( function () {

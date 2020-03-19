@@ -32,9 +32,7 @@ import {
 
 export default {
     mounted() {
-        this.fetchProducts().then(response => {
-            console.log(response);
-        });
+        this.fetchProducts().then();
     },
     computed: {
         ...productsComputed,

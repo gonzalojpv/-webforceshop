@@ -2287,7 +2287,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {};
   },
   mounted: function mounted() {
-    this.fetchCart().then();
+    this.fetchCart(this.getKeyCart.id).then();
   },
   methods: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["cartMethods"], {
     handleAction: function handleAction(id) {
@@ -2359,9 +2359,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    this.fetchProducts().then(function (response) {
-      console.log(response);
-    });
+    this.fetchProducts().then();
   },
   computed: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["productsComputed"]),
   methods: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["productsMethods"])
@@ -63853,7 +63851,7 @@ var productsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0_
 var productsMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchProducts', 'fetchProduct']);
 /* Cart */
 
-var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getItemsCart', 'getTotalCart', 'getInfoCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
+var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getItemsCart', 'getTotalCart', 'getInfoCart', 'getKeyCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
 var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard', 'removeItemCart', 'fetchCart', 'updateTotalCart']);
 /* Billing */
 
@@ -63957,7 +63955,9 @@ var state = {
     shipping: 20,
     total: 0
   },
-  cart_items: []
+  _cart: getCart('auth._cart'),
+  cart_items: [],
+  id: getCart('cart.id')
 };
 var mutations = {
   ADD_TO_CART: function ADD_TO_CART(state, product) {
@@ -63969,6 +63969,14 @@ var mutations = {
   UPDATE_INFO_CART: function UPDATE_INFO_CART(state, data) {
     state.cart.subtotal = data.subtotal;
     state.cart.total = data.total;
+  },
+  SET_KEY_CART: function SET_KEY_CART(state, _cart) {
+    saveState('auth._cart', _cart);
+    state._cart = _cart;
+  },
+  SET_ID_CART: function SET_ID_CART(state, _id) {
+    saveState('cart.id', _id);
+    state.id = _id;
   }
 };
 var getters = {
@@ -63984,6 +63992,12 @@ var getters = {
       return sum + element.product.price;
     });
     return total;
+  },
+  getKeyCart: function getKeyCart(state) {
+    return {
+      id: state.id,
+      _cart: state._cart
+    };
   }
 };
 var actions = {
@@ -64001,9 +64015,13 @@ var actions = {
     });
   },
   addToCard: function addToCard(_ref2, value) {
-    var commit = _ref2.commit;
+    var state = _ref2.state,
+        commit = _ref2.commit;
+    value._cart = state._cart;
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(baseURL, "cart/"), value).then(function (response) {
-      //commit("FETCH_PRODUCTS", response.data.data);
+      commit("ADD_TO_CART", response.data.data);
+      commit("SET_KEY_CART", response.data.data.session_id);
+      commit("SET_ID_CART", response.data.data.cart_id);
       return response.data;
     })["catch"](function (error) {
       return Promise.reject(error);
@@ -64012,20 +64030,19 @@ var actions = {
   removeItemCart: function removeItemCart(_ref3, id) {
     var commit = _ref3.commit;
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(baseURL, "cart/").concat(id)).then(function (response) {
-      console.log(response);
       commit("UPDATE_CART", response.data.data);
       return response.data;
     })["catch"](function (error) {
       return Promise.reject(error);
     });
   },
-  fetchCart: function fetchCart(_ref4) {
+  fetchCart: function fetchCart(_ref4, id) {
     var state = _ref4.state,
         commit = _ref4.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(baseURL, "cart/")).then(function (response) {
-      commit("UPDATE_CART", response.data.data);
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(baseURL, "cart/").concat(id)).then(function (response) {
+      commit("UPDATE_CART", response.data.data.items);
       var subtotal = 0;
-      response.data.data.forEach(function (element) {
+      response.data.data.items.forEach(function (element) {
         subtotal = subtotal + element.product.price;
       });
       var total = subtotal + state.cart.shipping;
@@ -64039,6 +64056,15 @@ var actions = {
     });
   }
 };
+
+function getCart(key) {
+  return window.localStorage.getItem(key);
+}
+
+function saveState(key, state) {
+  window.localStorage.setItem(key, JSON.stringify(state));
+}
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   mutations: mutations,

@@ -17,6 +17,7 @@ class CartDetail extends JsonResource
         return [
             'id' => $this->id,
             'cart_id' => $this->cart_id,
+            'session_id' => $this->cart->session_id,
             'product_id' => $this->product_id,
             'discount' => $this->discount,
             'product' => $this->product,

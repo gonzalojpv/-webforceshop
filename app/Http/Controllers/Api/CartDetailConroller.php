@@ -10,6 +10,7 @@ use Validator;
 use Session;
 
 use App\Http\Resources\CartDetail as CartDetailResource;
+use App\Http\Resources\Cart as CartResource;
 use Dirape\Token\Token;
 
 class CartDetailConroller extends BaseController
@@ -60,13 +61,13 @@ class CartDetailConroller extends BaseController
      */
     public function show($id)
     {
-        $cart_detail = CartDetail::find($id);
+        $cart = Cart::find($id);
 
-        if (is_null($cart_detail)) {
+        if (is_null($cart)) {
             return $this->sendError('Cart detail not found.');
         }
 
-        return $this->sendResponse(new CartDetailResource($cart_detail), 'Cart detail retrieved successfully.');
+        return $this->sendResponse(new CartResource($cart), 'Cart retrieved successfully.');
     }
 
     /**
@@ -97,12 +98,10 @@ class CartDetailConroller extends BaseController
 
     private function getCartId($request) {
 
-        $old_cart = Session::exists('_cart') ? Session::get('_cart') : null;
+        $session_id = $request->input('_cart');
 
-        var_dump( $old_cart );
-
-        if ( $old_cart ) {
-            $cart = Cart::where([ 'session_id' => $old_cart->session_id, 'status' => 'Active' ])->exists();
+        if ( $session_id ) {
+            $cart = Cart::where([ 'session_id' => $session_id, 'status' => 'Active' ])->get()->first();
 
             if ($cart)
                 return $cart->id;
@@ -112,11 +111,6 @@ class CartDetailConroller extends BaseController
         $cart = new Cart();
         $cart->session_id = (new Token())->Unique('carts', 'session_id', 60);
         $cart->save();
-
-        Session::put('_cart', $cart);
-
-        $old_cart = Session::has('_cart') ? Session::get('_cart') : null;
-        var_dump( $old_cart );
         return $cart->id;
     }
 }

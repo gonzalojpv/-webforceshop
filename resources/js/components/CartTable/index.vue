@@ -97,7 +97,7 @@ export default {
         };
     },
     mounted() {
-        this.fetchCart().then();
+        this.fetchCart(this.getKeyCart.id).then();
     },
     methods: {
         ...cartMethods,

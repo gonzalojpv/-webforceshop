@@ -12,7 +12,7 @@ export const productsMethods = mapActions(['fetchProducts', 'fetchProduct']);
 
 /* Cart */
 export const cartComputed = {
-    ...mapGetters(['getItemsCart', 'getTotalCart', 'getInfoCart']),
+    ...mapGetters(['getItemsCart', 'getTotalCart', 'getInfoCart', 'getKeyCart']),
     ...mapState(['cart', 'cart_items']),
 };
 

@@ -2186,6 +2186,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/helper */ "./resources/js/store/helper.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_1__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2251,6 +2260,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2269,24 +2290,16 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: 'Gingerbread',
         calories: 356
-      }, {
-        name: 'Jelly bean',
-        calories: 375
-      }, {
-        name: 'Lollipop',
-        calories: 392
-      }, {
-        name: 'Honeycomb',
-        calories: 408
-      }, {
-        name: 'Donut',
-        calories: 452
-      }, {
-        name: 'KitKat',
-        calories: 518
       }]
     };
-  }
+  },
+  methods: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["cartMethods"], {
+    handleAction: function handleAction(evt) {
+      evt.preventDefault();
+      console.log('remove item cart');
+    }
+  }),
+  computed: _objectSpread({}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["billingComputed"], {}, _store_helper__WEBPACK_IMPORTED_MODULE_0__["cartComputed"])
 });
 
 /***/ }),
@@ -2355,6 +2368,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2786,7 +2801,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Osw
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nheader.header[data-v-421e7ebb] {\n  position: absolute;\n  background-color: transparent !important;\n  width: 100%;\n  z-index: 1030;\n  webkit-transition: all 0.5s ease-out;\n  transition: all 0.5s ease-out;\n}\nheader.header.dark[data-v-421e7ebb] {\n  background-color: #020409 !important;\n}\nheader.header div.v-card[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2[data-v-421e7ebb] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n  color: #fff;\n  font-weight: bold;\n  font-family: \"Oswald\", sans-serif;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2 span[data-v-421e7ebb] {\n  color: #a98307;\n}", ""]);
+exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nheader.header[data-v-421e7ebb] {\n  position: absolute;\n  background-color: transparent !important;\n  width: 100%;\n  z-index: 1030;\n  webkit-transition: all 0.5s ease-out;\n  transition: all 0.5s ease-out;\n}\nheader.header.dark[data-v-421e7ebb] {\n  background-color: #020409 !important;\n}\nheader.header div.v-card[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title a[data-v-421e7ebb] {\n  text-decoration: none;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2[data-v-421e7ebb] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n  color: #fff;\n  font-weight: bold;\n  font-family: \"Oswald\", sans-serif;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2 span[data-v-421e7ebb] {\n  color: #a98307;\n}", ""]);
 
 // exports
 
@@ -4765,7 +4780,32 @@ var render = function() {
                                 return _c("tr", { key: item.name }, [
                                   _c("td", [_vm._v(_vm._s(item.name))]),
                                   _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(item.calories))])
+                                  _c("td", [_vm._v(_vm._s(item.calories))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    { staticClass: "text-center" },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            fab: "",
+                                            outlined: "",
+                                            "x-small": "",
+                                            color: "#020409"
+                                          },
+                                          on: { click: _vm.handleAction }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        X\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ])
                               }),
                               0
@@ -4967,7 +5007,12 @@ var render = function() {
                 { attrs: { flat: "" } },
                 [
                   _c("v-toolbar-title", [
-                    _c("h2", [_vm._v("WepForce"), _c("span", [_vm._v("Shop")])])
+                    _c("a", { attrs: { href: "/" } }, [
+                      _c("h2", [
+                        _vm._v("WepForce"),
+                        _c("span", [_vm._v("Shop")])
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("v-spacer")
@@ -63709,7 +63754,7 @@ var productsMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['
 /* Cart */
 
 var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
-var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard']);
+var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard', 'removeItemCart']);
 /* Billing */
 
 var billingComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getBillingData']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['billing']));
@@ -63814,7 +63859,9 @@ var mutations = {
   ADD_TO_CART: function ADD_TO_CART(state, product) {
     state.cart_items.push(product);
   },
-  REMOVE_TO_CART: function REMOVE_TO_CART() {}
+  UPDATE_CART: function UPDATE_CART(state, items) {
+    state.cart_items = items;
+  }
 };
 var getters = {
   getCart: function getCart(state) {
@@ -63829,6 +63876,16 @@ var actions = {
     var commit = _ref.commit;
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(baseURL, "cart/"), value).then(function (response) {
       //commit("FETCH_PRODUCTS", response.data.data);
+      return response.data;
+    })["catch"](function (error) {
+      return Promise.reject(error);
+    });
+  },
+  removeItemCart: function removeItemCart(_ref2, id) {
+    var commit = _ref2.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(baseURL, "cart/{id}")).then(function (response) {
+      console.log(response);
+      commit("UPDATE_CART", response.data.data.items);
       return response.data;
     })["catch"](function (error) {
       return Promise.reject(error);

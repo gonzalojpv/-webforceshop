@@ -87,10 +87,12 @@ class CartDetailConroller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CartDetail $cart_detail)
+    public function destroy($id)
     {
-         $cart_detail->delete();
-        return $this->sendResponse([], 'Cart detail deleted successfully.');
+        $cart_detail = CartDetail::find($id);
+        $cart_detail->delete();
+
+        return $this->sendResponse([], 'Cart item removed successfully.');
     }
 
     private function getCartId($request) {

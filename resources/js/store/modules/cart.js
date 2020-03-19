@@ -11,8 +11,8 @@ const mutations = {
     ADD_TO_CART(state, product) {
         state.cart_items.push(product);
     },
-    REMOVE_TO_CART() {
-
+    UPDATE_CART(state, items) {
+        state.cart_items = items;
     }
 }
 
@@ -33,6 +33,17 @@ const actions = {
                 return response.data;
             }).catch(error => {
                 return Promise.reject(error);
+        });
+    },
+    removeItemCart({ commit }, id) {
+        return axios.delete(`${baseURL}cart/{id}`).then(response => {
+            console.log(response);
+
+            commit("UPDATE_CART", response.data.data.items);
+
+            return response.data;
+        }).catch(error => {
+            return Promise.reject(error);
         });
     }
 };

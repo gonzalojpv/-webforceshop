@@ -11,19 +11,29 @@
                 <v-col cols="12">
                     <v-simple-table>
                         <template v-slot:default>
-                          <thead>
-                            <tr>
-                              <th class="text-left">Product name</th>
-                              <th class="text-left">Price</th>
-                              <th class="text-left">Total</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr v-for="item in desserts" :key="item.name">
-                              <td>{{ item.name }}</td>
-                              <td>{{ item.calories }}</td>
-                            </tr>
-                          </tbody>
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Product name</th>
+                                    <th class="text-left">Price</th>
+                                    <th class="text-left">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in desserts" :key="item.name">
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.calories }}</td>
+                                    <td class="text-center">
+                                        <v-btn
+                                            fab
+                                            outlined
+                                            x-small
+                                            v-on:click="handleAction"
+                                            color="#020409">
+                                            X
+                                        </v-btn>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </template>
                     </v-simple-table>
                 </v-col>
@@ -64,6 +74,13 @@
 </template>
 
 <script>
+import {
+        billingComputed,
+        cartComputed,
+        cartMethods
+    } from '../../store/helper';
+import swal from 'sweetalert';
+
 export default {
     data() {
         return {
@@ -88,29 +105,20 @@ export default {
             name: 'Gingerbread',
             calories: 356,
           },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-          },
         ],
         };
-    }
+    },
+    methods: {
+        ...cartMethods,
+        handleAction(evt) {
+            evt.preventDefault();
+            console.log('remove item cart');
+        }
+    },
+    computed: {
+        ...billingComputed,
+        ...cartComputed,
+    },
 }
 </script>
 

@@ -4,7 +4,9 @@
             <v-container>
                 <v-toolbar flat>
                     <v-toolbar-title>
-                        <h2>WepForce<span>Shop</span></h2>
+                        <a href="/">
+                            <h2>WepForce<span>Shop</span></h2>
+                        </a>
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
                 </v-toolbar>
@@ -46,6 +48,10 @@ header.header {
                 background-color: transparent !important;
 
                 div.v-toolbar__title {
+                    a {
+                        text-decoration: none;
+                    }
+
                     h2 {
                         font-size: 2.25rem;
                         line-height: 1.2;

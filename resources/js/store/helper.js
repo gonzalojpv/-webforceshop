@@ -16,7 +16,7 @@ export const cartComputed = {
     ...mapState(['cart', 'cart_items']),
 };
 
-export const cartMethods = mapActions(['addToCard', ]);
+export const cartMethods = mapActions(['addToCard', 'removeItemCart']);
 
 /* Billing */
 export const billingComputed = {

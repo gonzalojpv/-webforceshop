@@ -20,6 +20,7 @@ class CreateCartsTable extends Migration
             $table->date('arrived_date')->nullable();
             $table->string('status')->default('Active'); // Active, Pending, Approved, Cancelled, Finished
             $table->string( 'session_id' )->default( '0' );
+            $table->softDeletes();
 
             $table->timestamps();
         });

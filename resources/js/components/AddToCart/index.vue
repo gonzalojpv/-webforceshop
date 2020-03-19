@@ -1,26 +1,31 @@
 <template>
     <div class="add-to-cart">
         <p class="price">${{ getProduct.price }}</p>
-        <form>
-            <div class="form-group row">
-                <label for="" class="col-4 col-form-label">Quantity</label>
-                <div class="col-8">
-                    <input
-                        type="number"
-                        step="1"
-                        min="1"
-                        max="10"
-                        value="1"
-                        class="quantity"
-                        name="quantity"/>
-                </div>
-            </div>
-            <button
-                type="submit"
-                name="add-to-cart"
-                value="12"
-                class="single_add_to_cart_button">Add to cart</button>
-        </form>
+        <v-form @submit="onSubmit">
+            <v-container>
+                <v-row>
+                    <v-col cols="4">
+                        <v-text-field
+                            type="number"
+                            step="1"
+                            min="1"
+                            max="10"
+                            value="1"
+                            class="quantity"
+                            v-model="quantity"
+                            label="Quantity"></v-text-field>
+                    </v-col>
+                    <v-col cols="6">
+                        <button
+                            type="submit"
+                            name="add-to-cart"
+                            value="12"
+                            class="single_add_to_cart_button">{{ text_button }}</button>
+                    </v-col>
+                </v-row>
+            </v-container>
+
+        </v-form>
         <div class="product_meta">
             Category: <span>{{ getProduct.category }}</span>
         </div>
@@ -30,11 +35,35 @@
 <script>
 import {
     productsComputed,
+    cartComputed,
+    cartMethods
     } from '../../store/helper';
+import swal from 'sweetalert';
 
 export default {
+    data() {
+        return {
+            quantity: 1,
+            text_button: 'Add to cart',
+        };
+    },
+    methods: {
+        ...cartMethods,
+        onSubmit(evt) {
+            evt.preventDefault();
+
+            this.addToCard({
+                product_id: this.getProduct.id,
+                quantity: this.quantity,
+            }).then((response) => {
+                swal('Good job!', 'You added new product in your shopping cart!', 'success');
+                 this.text_button = 'Update cart';
+            });
+        }
+    },
     computed: {
         ...productsComputed,
+        ...cartComputed,
     },
 }
 </script>
@@ -51,7 +80,7 @@ export default {
         }
 
         form {
-            label {
+            label.v-label {
                 font-weight: 700;
                 color: map-get($theme-colors, dark);
                 font-size: 1.125rem;
@@ -63,7 +92,6 @@ export default {
                 font-weight: 400;
             }
             button.single_add_to_cart_button {
-                margin-top: 1rem;
                 border: 1px solid map-get($theme-colors, dark);
                 border-radius: 0;
                 background-color: map-get($theme-colors, white);
@@ -89,7 +117,6 @@ export default {
         }
 
         .product_meta {
-            margin-top: 1.5rem;
             font-size: 1.125rem;
             color: map-get($theme-colors, dark);
 

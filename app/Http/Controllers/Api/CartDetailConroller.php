@@ -44,7 +44,7 @@ class CartDetailConroller extends BaseController
         }
 
         $cart_detail = new CartDetail();
-        $cart_detail->cart_id = $this->getCartId();
+        $cart_detail->cart_id = $this->getCartId($request);
         $cart_detail->product_id = $input['product_id'];
         $cart_detail->quantity = $input['quantity'];
         $cart_detail->save();
@@ -93,12 +93,14 @@ class CartDetailConroller extends BaseController
         return $this->sendResponse([], 'Cart detail deleted successfully.');
     }
 
-    private function getCartId() {
+    private function getCartId($request) {
 
-        $old_cart = Session::has('_cart') ? Session::get('_cart') : null;
+        $old_cart = Session::exists('_cart') ? Session::get('_cart') : null;
+
+        var_dump( $old_cart );
 
         if ( $old_cart ) {
-            $cart = Cart::where([ 'session_id' => $session_id, 'status' => 'Active' ])->exists();
+            $cart = Cart::where([ 'session_id' => $old_cart->session_id, 'status' => 'Active' ])->exists();
 
             if ($cart)
                 return $cart->id;
@@ -111,6 +113,8 @@ class CartDetailConroller extends BaseController
 
         Session::put('_cart', $cart);
 
+        $old_cart = Session::has('_cart') ? Session::get('_cart') : null;
+        var_dump( $old_cart );
         return $cart->id;
     }
 }

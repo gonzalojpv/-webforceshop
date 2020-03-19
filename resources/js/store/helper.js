@@ -8,3 +8,12 @@ export const productsComputed = {
 };
 
 export const productsMethods = mapActions(['fetchProducts', 'fetchProduct']);
+
+
+/* Cart */
+export const cartComputed = {
+    ...mapGetters(['getCart',]),
+    ...mapState(['cart', 'cart_items']),
+};
+
+export const cartMethods = mapActions(['addToCard', ]);

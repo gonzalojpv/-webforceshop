@@ -1,0 +1,13 @@
+.header-content {
+    position: relative;
+    padding: 0 20px;
+    margin-bottom: 2rem;
+
+    .page-title {
+        color: map-get($theme-colors, primary);
+
+        .font-weight-bold {
+            color: map-get($theme-colors, dark);
+        }
+    }
+}

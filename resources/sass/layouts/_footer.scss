@@ -1,0 +1,8 @@
+footer {
+    color: map-get($theme-colors, gray-1-light);
+    text-align: center;
+    border-top: 1px solid map-get($theme-colors, primary-light);
+    p {
+        margin: 0;
+    }
+}

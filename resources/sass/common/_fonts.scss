@@ -1,0 +1,77 @@
+@import '~vuetify/src/styles/settings/_variables';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-header;
+    font-weight: 400;
+
+    @media #{map-get($display-breakpoints, 'lg-and-up')} {
+        font-weight: 500;
+    }
+}
+
+h1 {
+    font-size: 3.375rem;
+    line-height: 1.1;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+        font-size: 3.5rem;
+    }
+
+    @media #{map-get($display-breakpoints, 'lg-and-up')} {
+        font-size: 4rem;
+    }
+}
+
+h2 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+        font-size: 2.5rem;
+    }
+
+    @media #{map-get($display-breakpoints, 'lg-and-up')} {
+        font-size: 2.75rem;
+    }
+}
+
+h3 {
+    font-size: 1.875rem;
+    line-height: 1.25;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+        font-size: 2rem;
+    }
+
+    @media #{map-get($display-breakpoints, 'lg-and-up')} {
+        font-size: 2.125rem;
+    }
+}
+
+h4 {
+    font-size: 1.1rem;
+    line-height: 1.33;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+        font-size: 1.2rem;
+    }
+
+    @media #{map-get($display-breakpoints, 'lg-and-up')} {
+        font-size: 1.3rem;
+    }
+}
+
+h5 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+h6 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}

@@ -12,11 +12,11 @@ export const productsMethods = mapActions(['fetchProducts', 'fetchProduct']);
 
 /* Cart */
 export const cartComputed = {
-    ...mapGetters(['getItemsCart',]),
+    ...mapGetters(['getItemsCart', 'getTotalCart', 'getInfoCart']),
     ...mapState(['cart', 'cart_items']),
 };
 
-export const cartMethods = mapActions(['addToCard', 'removeItemCart', 'fetchCart']);
+export const cartMethods = mapActions(['addToCard', 'removeItemCart', 'fetchCart', 'updateTotalCart']);
 
 /* Billing */
 export const billingComputed = {

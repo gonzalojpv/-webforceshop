@@ -4780,11 +4780,11 @@ var render = function() {
                                       ]),
                                       _vm._v(" "),
                                       _c("th", { staticClass: "text-left" }, [
-                                        _vm._v("Price")
+                                        _vm._v("Quantity")
                                       ]),
                                       _vm._v(" "),
                                       _c("th", { staticClass: "text-left" }, [
-                                        _vm._v("Quantity")
+                                        _vm._v("Price")
                                       ]),
                                       _vm._v(" "),
                                       _c("th", { staticClass: "text-left" }, [
@@ -4802,11 +4802,13 @@ var render = function() {
                                         ]),
                                         _vm._v(" "),
                                         _c("td", [
-                                          _vm._v(_vm._s(item.quantity))
+                                          _vm._v(_vm._s(item.quantity) + " X ")
                                         ]),
                                         _vm._v(" "),
                                         _c("td", [
-                                          _vm._v(_vm._s(item.product.price))
+                                          _vm._v(
+                                            "$" + _vm._s(item.product.price)
+                                          )
                                         ]),
                                         _vm._v(" "),
                                         _c(
@@ -4850,7 +4852,7 @@ var render = function() {
                           ],
                           null,
                           false,
-                          3991576364
+                          725751184
                         )
                       })
                     ],
@@ -4906,7 +4908,7 @@ var render = function() {
                     _c("h4", [_vm._v("Subtotal")])
                   ]),
                   _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                    _c("h4", [_vm._v("$838")])
+                    _c("h4", [_vm._v("$" + _vm._s(_vm.getInfoCart.total))])
                   ])
                 ],
                 1
@@ -4933,7 +4935,7 @@ var render = function() {
                     _c("h4", [_vm._v("Shipping")])
                   ]),
                   _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                    _c("h4", [_vm._v("$838")])
+                    _c("h4", [_vm._v("$" + _vm._s(_vm.getInfoCart.shipping))])
                   ])
                 ],
                 1
@@ -4960,7 +4962,7 @@ var render = function() {
                     _c("h4", [_vm._v("Total")])
                   ]),
                   _c("v-col", { attrs: { cols: "6", md: "6" } }, [
-                    _c("h4", [_vm._v("$838")])
+                    _c("h4", [_vm._v("$" + _vm._s(_vm.getInfoCart.total))])
                   ])
                 ],
                 1
@@ -63851,8 +63853,8 @@ var productsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0_
 var productsMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchProducts', 'fetchProduct']);
 /* Cart */
 
-var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getItemsCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
-var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard', 'removeItemCart', 'fetchCart']);
+var cartComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getItemsCart', 'getTotalCart', 'getInfoCart']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'cart_items']));
+var cartMethods = Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addToCard', 'removeItemCart', 'fetchCart', 'updateTotalCart']);
 /* Billing */
 
 var billingComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getBillingData']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['billing']));
@@ -63950,7 +63952,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var baseURL = 'http://webforceshop.test/api/';
 var state = {
-  cart: {},
+  cart: {
+    subtotal: 0,
+    shipping: 20,
+    total: 0
+  },
   cart_items: []
 };
 var mutations = {
@@ -63959,16 +63965,43 @@ var mutations = {
   },
   UPDATE_CART: function UPDATE_CART(state, items) {
     state.cart_items = items;
+  },
+  UPDATE_INFO_CART: function UPDATE_INFO_CART(state, data) {
+    state.cart.subtotal = data.subtotal;
+    state.cart.total = data.total;
   }
 };
 var getters = {
   getItemsCart: function getItemsCart(state) {
     return state.cart_items;
+  },
+  getInfoCart: function getInfoCart(state) {
+    return state.cart;
+  },
+  getTotalCart: function getTotalCart(state) {
+    var sum = 0;
+    var total = state.cart_items.forEach(function (element) {
+      return sum + element.product.price;
+    });
+    return total;
   }
 };
 var actions = {
-  addToCard: function addToCard(_ref, value) {
-    var commit = _ref.commit;
+  updateTotalCart: function updateTotalCart(_ref, value) {
+    var state = _ref.state,
+        commit = _ref.commit;
+    var sum = 0;
+    var subtotal = state.cart_items.forEach(function (element) {
+      return sum + element.product.price;
+    });
+    var total = subtotal + state.shipping;
+    commit("UPDATE_INFO_CART", {
+      total: total,
+      subtotal: subtotal
+    });
+  },
+  addToCard: function addToCard(_ref2, value) {
+    var commit = _ref2.commit;
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(baseURL, "cart/"), value).then(function (response) {
       //commit("FETCH_PRODUCTS", response.data.data);
       return response.data;
@@ -63976,8 +64009,8 @@ var actions = {
       return Promise.reject(error);
     });
   },
-  removeItemCart: function removeItemCart(_ref2, id) {
-    var commit = _ref2.commit;
+  removeItemCart: function removeItemCart(_ref3, id) {
+    var commit = _ref3.commit;
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(baseURL, "cart/").concat(id)).then(function (response) {
       console.log(response);
       commit("UPDATE_CART", response.data.data);
@@ -63986,11 +64019,20 @@ var actions = {
       return Promise.reject(error);
     });
   },
-  fetchCart: function fetchCart(_ref3) {
-    var commit = _ref3.commit;
+  fetchCart: function fetchCart(_ref4) {
+    var state = _ref4.state,
+        commit = _ref4.commit;
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(baseURL, "cart/")).then(function (response) {
       commit("UPDATE_CART", response.data.data);
-      console.log(response.data);
+      var subtotal = 0;
+      response.data.data.forEach(function (element) {
+        subtotal = subtotal + element.product.price;
+      });
+      var total = subtotal + state.cart.shipping;
+      commit("UPDATE_INFO_CART", {
+        total: total,
+        subtotal: subtotal
+      });
       return response.data;
     })["catch"](function (error) {
       return Promise.reject(error);

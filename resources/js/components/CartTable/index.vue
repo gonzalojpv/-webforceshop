@@ -14,16 +14,16 @@
                             <thead>
                                 <tr>
                                     <th class="text-left">Product name</th>
-                                    <th class="text-left">Price</th>
                                     <th class="text-left">Quantity</th>
+                                    <th class="text-left">Price</th>
                                     <th class="text-left">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="item in getItemsCart" :key="item.name">
                                     <td>{{ item.product.name }}</td>
-                                    <td>{{ item.quantity }}</td>
-                                    <td>{{ item.product.price }}</td>
+                                    <td>{{ item.quantity }} X </td>
+                                    <td>${{ item.product.price }}</td>
                                     <td class="text-center">
                                         <v-btn
                                             fab
@@ -52,7 +52,7 @@
                 <v-col cols="6" md="6">
                     <h4>Subtotal</h4>
                 </v-col><v-col cols="6" md="6">
-                    <h4>$838</h4>
+                    <h4>${{ getInfoCart.total }}</h4>
                 </v-col>
             </v-row>
             <v-row v-if="getItemsCart.length">
@@ -64,7 +64,7 @@
                 <v-col cols="6" md="6">
                     <h4>Shipping</h4>
                 </v-col><v-col cols="6" md="6">
-                    <h4>$838</h4>
+                    <h4>${{ getInfoCart.shipping }}</h4>
                 </v-col>
             </v-row>
             <v-row v-if="getItemsCart.length">
@@ -76,7 +76,7 @@
                 <v-col cols="6" md="6">
                     <h4>Total</h4>
                 </v-col><v-col cols="6" md="6">
-                    <h4>$838</h4>
+                    <h4>${{ getInfoCart.total }}</h4>
                 </v-col>
             </v-row>
         </v-container>

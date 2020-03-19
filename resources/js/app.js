@@ -9,6 +9,7 @@ Vue.use(VueRouter)
 import App from './views/App'
 import ProductDetail from './views/ProductDetail'
 import Home from './views/Home'
+import Checkout from './views/Checkout'
 
 import {store} from './store';
 
@@ -24,6 +25,11 @@ const router = new VueRouter({
             path: '/product/:id',
             name: 'product_detail',
             component: ProductDetail,
+        },
+        {
+            path: '/checkout',
+            name: 'checkout',
+            component: Checkout,
         },
     ],
 });

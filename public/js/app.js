@@ -2385,6 +2385,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2801,7 +2804,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Osw
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nheader.header[data-v-421e7ebb] {\n  position: absolute;\n  background-color: transparent !important;\n  width: 100%;\n  z-index: 1030;\n  webkit-transition: all 0.5s ease-out;\n  transition: all 0.5s ease-out;\n}\nheader.header.dark[data-v-421e7ebb] {\n  background-color: #020409 !important;\n}\nheader.header div.v-card[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title a[data-v-421e7ebb] {\n  text-decoration: none;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2[data-v-421e7ebb] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n  color: #fff;\n  font-weight: bold;\n  font-family: \"Oswald\", sans-serif;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2 span[data-v-421e7ebb] {\n  color: #a98307;\n}", ""]);
+exports.push([module.i, "/** Fonts **/\n/* new breackpoint*/\n/** Bootstrap navbar fix (https://git.io/fADqW) */\nh1[data-v-421e7ebb],\nh2[data-v-421e7ebb],\nh3[data-v-421e7ebb],\nh4[data-v-421e7ebb],\nh5[data-v-421e7ebb],\nh6[data-v-421e7ebb] {\n  font-family: \"Oswald\", sans-serif;\n  font-weight: 400;\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-421e7ebb],\nh2[data-v-421e7ebb],\nh3[data-v-421e7ebb],\nh4[data-v-421e7ebb],\nh5[data-v-421e7ebb],\nh6[data-v-421e7ebb] {\n    font-weight: 500;\n}\n}\nh1[data-v-421e7ebb] {\n  font-size: 3.375rem;\n  line-height: 1.1;\n}\n@media only screen and (min-width: 768px) {\nh1[data-v-421e7ebb] {\n    font-size: 3.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh1[data-v-421e7ebb] {\n    font-size: 4rem;\n}\n}\nh2[data-v-421e7ebb] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n}\n@media only screen and (min-width: 768px) {\nh2[data-v-421e7ebb] {\n    font-size: 2.5rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh2[data-v-421e7ebb] {\n    font-size: 2.75rem;\n}\n}\nh3[data-v-421e7ebb] {\n  font-size: 1.875rem;\n  line-height: 1.25;\n}\n@media only screen and (min-width: 768px) {\nh3[data-v-421e7ebb] {\n    font-size: 2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh3[data-v-421e7ebb] {\n    font-size: 2.125rem;\n}\n}\nh4[data-v-421e7ebb] {\n  font-size: 1.1rem;\n  line-height: 1.33;\n}\n@media only screen and (min-width: 768px) {\nh4[data-v-421e7ebb] {\n    font-size: 1.2rem;\n}\n}\n@media only screen and (min-width: 992px) {\nh4[data-v-421e7ebb] {\n    font-size: 1.3rem;\n}\n}\nh5[data-v-421e7ebb] {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}\nh6[data-v-421e7ebb] {\n  font-size: 1rem;\n  line-height: 1.5rem;\n}\nheader.header[data-v-421e7ebb] {\n  position: absolute;\n  background-color: transparent !important;\n  width: 100%;\n  z-index: 1030;\n  webkit-transition: all 0.5s ease-out;\n  transition: all 0.5s ease-out;\n}\nheader.header.dark[data-v-421e7ebb] {\n  background-color: #020409 !important;\n}\nheader.header div.v-card[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content[data-v-421e7ebb] {\n  background-color: transparent !important;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title a[data-v-421e7ebb] {\n  text-decoration: none;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2[data-v-421e7ebb] {\n  font-size: 2.25rem;\n  line-height: 1.2;\n  color: #fff;\n  font-weight: bold;\n  font-family: \"Oswald\", sans-serif;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content div.v-toolbar__title h2 span[data-v-421e7ebb] {\n  color: #a98307;\n}\nheader.header div.v-card header.v-sheet div.v-toolbar__content a.v-btn[data-v-421e7ebb] {\n  background-color: transparent !important;\n  border-radius: 50%;\n  color: #fff;\n  border: 2px solid #a98307;\n  font-family: \"Oswald\", sans-serif;\n  font-size: 0.6rem;\n  min-width: 44px !important;\n  padding: 0;\n  webkit-transition: all 0.5s ease-out;\n  transition: all 0.5s ease-out;\n}", ""]);
 
 // exports
 
@@ -5015,7 +5018,20 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("v-spacer")
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        large: "",
+                        light: "",
+                        link: "",
+                        href: "/checkout"
+                      }
+                    },
+                    [_vm._v("\n                    Cart\n                ")]
+                  )
                 ],
                 1
               )

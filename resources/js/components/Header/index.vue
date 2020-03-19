@@ -9,6 +9,9 @@
                         </a>
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
+                    <v-btn large light link href="/checkout">
+                        Cart
+                    </v-btn>
                 </v-toolbar>
             </v-container>
         </v-card>
@@ -23,6 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../sass/_variables';
+@import '../../../sass/common/_fonts';
 
 header.header {
     position: absolute;
@@ -63,6 +67,21 @@ header.header {
                             color: map-get($theme-colors, primary);
                         }
                     }
+                }
+
+                a.v-btn {
+                    background-color: transparent !important;
+                    border-radius: 50%;
+                    color: map-get($theme-colors, white);
+                    border: 2px solid map-get($theme-colors, primary);
+                    font-family: $font-header;
+                    font-size: 0.6rem;
+                    min-width: 44px !important;
+                    padding: 0;
+                    webkit-transition: all 0.5s ease-out;
+                    -moz-transition: all 0.5s ease-out;
+                    -o-transition: all 0.5s ease-out;
+                    transition: all 0.5s ease-out;
                 }
             }
         }

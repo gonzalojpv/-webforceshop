@@ -24,7 +24,7 @@
                     <p class="text-right">Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla.</p>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route('admin.categories.store',) }}" method="POST">
+                    <form action="{{ route('admin.categories.store') }}" method="POST">
                          @csrf
                         @include('admin.categories._form')
                         <button class="btn btn-primary float-right" type="submit">Add Category</button>

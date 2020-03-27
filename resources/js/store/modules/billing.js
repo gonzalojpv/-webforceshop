@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-const baseURL = 'http://webforceshop.test/api/';
+const baseURL = process.env.MIX_VUE_APP_BASE_URI;
 
 const state = {
     billing: {},
